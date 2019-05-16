@@ -18,7 +18,9 @@ export default class Loading extends React.Component {
           .once("value")
           .then(snapshot => {
             var userInfo = snapshot.val();
-            if (userInfo.userType === "personal") {
+            if (!userInfo) {
+              firebase.auth().signOut();
+            } else if (userInfo.userType === "personal") {
               console.log("loading-personal");
               this.props.navigation.navigate("Profile");
             } else if (userInfo.userType === "business") {
