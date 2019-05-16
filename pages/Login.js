@@ -73,7 +73,7 @@ export default class Login extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              marginBottom: "18%",
+              marginBottom: "10%",
               paddingTop: 20
             }}
             placeholder="Password"
@@ -93,26 +93,20 @@ export default class Login extends React.Component {
             <Text style={{ color: "black" }}>Log In</Text>
           </Button>
           <Button
+            style={{ marginTop: 40 }}
+            transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
-            style={{
-              backgroundColor: "white",
-              width: "73%",
-              height: "7%",
-              borderRadius: 30
-            }}
           >
-            <Text style={{ color: "black" }}>Sign Up</Text>
+            <Text style={{ color: "white" }}>New User? Register Here</Text>
           </Button>
           <Button
             onPress={() => this.props.navigation.navigate("RegisterBus")}
-            style={{
-              backgroundColor: "white",
-              width: "73%",
-              height: "7%",
-              borderRadius: 30
-            }}
+            transparent
+            style={{ marginTop: -15 }}
           >
-            <Text style={{ color: "black" }}>Sign up for Business</Text>
+            <Text style={{ color: "white" }}>
+              Business Owner? Register Here
+            </Text>
           </Button>
         </View>
       </LinearGradient>
