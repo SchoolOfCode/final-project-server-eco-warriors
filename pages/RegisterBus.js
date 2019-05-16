@@ -153,23 +153,21 @@ export default class SignUp extends React.Component {
             autoCapitalize="none"
           />
           <Picker
-            placeholder="Choose a category"
-            selectedValue={this.state.language}
-            textStyle={{ fontSize: 100 }}
-            style={{ height: 50, width: 280, color: "white" }}
+            value={this.state.category}
+            style={{ height: 45, width: 280, color: "white" }}
             onValueChange={(itemValue, itemIndex) =>
-              this.setState({ language: itemValue })
+              this.setState({ category: itemValue })
             }
           >
             <Picker.Item label="Choose a category" value="cat" />
-            <Picker.Item label="Plastics" value="ps" />
+            <Picker.Item label="Zero Waste" value="ps" />
             <Picker.Item label="Clothes" value="ch" />
             <Picker.Item label="Energy" value="eg" />
             <Picker.Item label="Cosmetics" value="co" />
-            <Picker.Item label="Meat" value="me" />
+            <Picker.Item label="Vegan" value="ve" />
           </Picker>
           {/* <TextInput
-            placeholder="Business Category"
+            placeholder="Business Category"kl
             placeholderTextColor="white"
             style={{
               width: "73%",
