@@ -3,7 +3,8 @@ import {
   StyleSheet,
   TextInput,
   KeyboardAvoidingView,
-  View
+  View,
+  Picker
 } from "react-native";
 import { LinearGradient } from "expo";
 import { Button, Text } from "@99xt/first-born";
@@ -16,7 +17,6 @@ export default class SignUp extends React.Component {
     businessAddress: "",
     street: "",
     postcode: "",
-    city: "",
     email: "",
     businessDescription: "",
     userType: "business",
@@ -41,7 +41,6 @@ export default class SignUp extends React.Component {
           .set({
             userType: this.state.userType,
             street: this.state.street,
-            city: this.state.city,
             postcode: this.state.postcode,
             category: this.state.category,
             businessName: this.state.businessName,
@@ -69,7 +68,7 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" style={{ fontSize: 20, marginBottom: "5%" }}>
+          <Text color="white" style={{ fontSize: 20, marginBottom: "2%" }}>
             Business Registration
           </Text>
           <TextInput
@@ -126,19 +125,6 @@ export default class SignUp extends React.Component {
             value={this.state.street}
           />
           <TextInput
-            placeholder="City"
-            placeholderTextColor="white"
-            style={{
-              width: "73%",
-              height: "7%",
-              borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
-            }}
-            onChangeText={city => this.setState({ city })}
-            value={this.state.city}
-            autoCapitalize="none"
-          />
-          <TextInput
             placeholder="Postcode"
             placeholderTextColor="white"
             style={{
@@ -166,20 +152,37 @@ export default class SignUp extends React.Component {
             value={this.state.businessDescription}
             autoCapitalize="none"
           />
-          <TextInput
+          <Picker
+            placeholder="Choose a category"
+            selectedValue={this.state.language}
+            textStyle={{ fontSize: 100 }}
+            style={{ height: 50, width: 280, color: "white" }}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ language: itemValue })
+            }
+          >
+            <Picker.Item label="Choose a category" value="cat" />
+            <Picker.Item label="Plastics" value="ps" />
+            <Picker.Item label="Clothes" value="ch" />
+            <Picker.Item label="Energy" value="eg" />
+            <Picker.Item label="Cosmetics" value="co" />
+            <Picker.Item label="Meat" value="me" />
+          </Picker>
+          {/* <TextInput
             placeholder="Business Category"
             placeholderTextColor="white"
             style={{
               width: "73%",
               height: "7%",
-              marginBottom: "15%",
+              marginBottom: "8%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1
             }}
             onChangeText={category => this.setState({ category })}
             value={this.state.category}
             autoCapitalize="none"
-          />
+          /> */}
+
           <Button
             style={{
               backgroundColor: "white",
@@ -189,19 +192,23 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black" }}>Sign up</Text>
+            <Text style={{ color: "black" }}>Register</Text>
           </Button>
           <Button
-            style={{
-              width: "73%",
-              height: "8%",
-              backgroundColor: "transparent",
-              border: "none"
-            }}
+            transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "black" }}>
+            <Text style={{ color: "white" }}>
               Already have an account? Login
+            </Text>
+          </Button>
+          <Button
+            style={{ marginTop: -15 }}
+            transparent
+            onPress={() => this.props.navigation.navigate("SignUp")}
+          >
+            <Text style={{ color: "white" }}>
+              Not a business? Register here
             </Text>
           </Button>
         </KeyboardAwareScrollView>
