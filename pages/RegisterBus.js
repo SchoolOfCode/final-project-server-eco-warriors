@@ -14,11 +14,14 @@ export default class SignUp extends React.Component {
   state = {
     businessName: "",
     businessAddress: "",
+    street: "",
+    postcode: "",
+    city: "",
     email: "",
     businessDescription: "",
     userType: "business",
-    location: "",
     email: "",
+    category: "",
     errorMessage: null
   };
   navigateToLogin = () => {
@@ -37,11 +40,13 @@ export default class SignUp extends React.Component {
           .ref("users/" + currentUser.user.uid)
           .set({
             userType: this.state.userType,
+            street: this.state.street,
+            city: this.state.city,
+            postcode: this.state.postcode,
+            category: this.state.category,
             businessName: this.state.businessName,
             businessAddress: this.state.businessAddress,
-            businessDescription: this.state.businessDescription,
-            location: this.state.location
-
+            businessDescription: this.state.businessDescriptio
             //insert QR code
           })
           .then(() => {
@@ -64,8 +69,8 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" size="h4">
-            Ecommunity
+          <Text color="white" style={{ fontSize: 20, marginBottom: "5%" }}>
+            Business Registration
           </Text>
           <TextInput
             placeholder="Business Name"
@@ -81,19 +86,6 @@ export default class SignUp extends React.Component {
             autoCapitalize="none"
           />
           <TextInput
-            placeholder="Business Address"
-            placeholderTextColor="white"
-            style={{
-              width: "73%",
-              height: "7%",
-              borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
-            }}
-            onChangeText={businessAddress => this.setState({ businessAddress })}
-            value={this.state.surname}
-            autoCapitalize="none"
-          />
-          <TextInput
             placeholder="Business Email"
             placeholderTextColor="white"
             style={{
@@ -102,23 +94,8 @@ export default class SignUp extends React.Component {
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1
             }}
-            autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
-          />
-          <TextInput
-            placeholder="Business Description"
-            placeholderTextColor="white"
-            style={{
-              width: "73%",
-              height: "7%",
-              borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
-            }}
-            onChangeText={businessDescription =>
-              this.setState({ businessDescription })
-            }
-            value={this.state.businessDescription}
             autoCapitalize="none"
           />
           <TextInput
@@ -136,18 +113,72 @@ export default class SignUp extends React.Component {
             value={this.state.password}
           />
           <TextInput
-            placeholder="Location"
+            placeholder="Street"
             placeholderTextColor="white"
             style={{
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1,
-              marginBottom: "15%"
+              borderBottomWidth: 1
             }}
             autoCapitalize="none"
-            onChangeText={location => this.setState({ location })}
-            value={this.state.location}
+            onChangeText={street => this.setState({ street })}
+            value={this.state.street}
+          />
+          <TextInput
+            placeholder="City"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={city => this.setState({ city })}
+            value={this.state.city}
+            autoCapitalize="none"
+          />
+          <TextInput
+            placeholder="Postcode"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={postcode => this.setState({ postcode })}
+            value={this.state.postcode}
+            autoCapitalize="none"
+          />
+          <TextInput
+            placeholder="Business Description"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={businessDescription =>
+              this.setState({ businessDescription })
+            }
+            value={this.state.businessDescription}
+            autoCapitalize="none"
+          />
+          <TextInput
+            placeholder="Business Category"
+            placeholderTextColor="white"
+            style={{
+              width: "73%",
+              height: "7%",
+              marginBottom: "15%",
+              borderBottomColor: "#FFFFFF",
+              borderBottomWidth: 1
+            }}
+            onChangeText={category => this.setState({ category })}
+            value={this.state.category}
+            autoCapitalize="none"
           />
           <Button
             style={{
