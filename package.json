@@ -19,6 +19,7 @@
     "react-native-pure-chart": "0.0.24",
     "react-native-qrcode": "^0.2.7",
     "react-native-simple-radio-button": "^2.7.3",
+    "react-native-svg-transformer": "^0.13.0",
     "react-navigation": "^3.9.1"
   },
   "devDependencies": {
