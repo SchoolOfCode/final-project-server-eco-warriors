@@ -45,7 +45,7 @@ export default class SignUp extends React.Component {
             category: this.state.category,
             businessName: this.state.businessName,
             businessAddress: this.state.businessAddress,
-            businessDescription: this.state.businessDescriptio
+            businessDescription: this.state.businessDescription
             //insert QR code
           })
           .then(() => {
@@ -153,23 +153,22 @@ export default class SignUp extends React.Component {
             autoCapitalize="none"
           />
           <Picker
-            placeholder="Choose a category"
-            selectedValue={this.state.language}
-            textStyle={{ fontSize: 100 }}
-            style={{ height: 50, width: 280, color: "white" }}
-            onValueChange={(itemValue, itemIndex) =>
-              this.setState({ language: itemValue })
-            }
+            selectedValue={this.state.category}
+            style={{ height: 45, width: 280, color: "white" }}
+            onValueChange={(itemValue, itemIndex) => {
+              console.log(itemIndex, itemValue);
+              this.setState({ category: itemValue });
+            }}
           >
             <Picker.Item label="Choose a category" value="cat" />
-            <Picker.Item label="Plastics" value="ps" />
-            <Picker.Item label="Clothes" value="ch" />
-            <Picker.Item label="Energy" value="eg" />
-            <Picker.Item label="Cosmetics" value="co" />
-            <Picker.Item label="Meat" value="me" />
+            <Picker.Item label="Zero Waste" value="zeroWaste" />
+            <Picker.Item label="Clothes" value="clothes" />
+            <Picker.Item label="Energy" value="energy" />
+            <Picker.Item label="Cosmetics" value="cosmetics" />
+            <Picker.Item label="Vegan" value="vegan" />
           </Picker>
           {/* <TextInput
-            placeholder="Business Category"
+            placeholder="Business Category"kl
             placeholderTextColor="white"
             style={{
               width: "73%",
