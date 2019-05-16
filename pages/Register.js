@@ -18,7 +18,6 @@ import firebase from "firebase";
 
 export default class SignUp extends React.Component {
   state = {
-    ageRange: "",
     name: "",
     userType: "personal",
     surname: "",
@@ -47,7 +46,6 @@ export default class SignUp extends React.Component {
           .ref("users/" + currentUser.user.uid)
           .set({
             userType: this.state.userType,
-            ageRange: this.state.ageRange,
             firstName: this.state.name,
             surname: this.state.surname,
             location: this.state.location,
@@ -86,7 +84,10 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" style={{ fontSize: 20 }}>
+          <Text
+            color="white"
+            style={{ fontSize: 20, marginBottom: "7%", marginTop: -30 }}
+          >
             Personal Registration
           </Text>
           <TextInput
@@ -143,19 +144,6 @@ export default class SignUp extends React.Component {
             value={this.state.password}
           />
           <TextInput
-            placeholder="Age range"
-            placeholderTextColor="white"
-            style={{
-              width: "73%",
-              height: "7%",
-              borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
-            }}
-            autoCapitalize="none"
-            onChangeText={ageRange => this.setState({ ageRange })}
-            value={this.state.ageRange}
-          />
-          <TextInput
             placeholder="Location"
             placeholderTextColor="white"
             style={{
@@ -163,7 +151,7 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              marginBottom: "15%"
+              marginBottom: "8%"
             }}
             autoCapitalize="none"
             onChangeText={location => this.setState({ location })}
@@ -178,18 +166,23 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black" }}>Sign up</Text>
+            <Text style={{ color: "black" }}>Register</Text>
           </Button>
           <Button
             transparent
-            style={{
-              width: "73%",
-              height: "8%"
-            }}
             onPress={() => this.props.navigation.navigate("Login")}
           >
             <Text style={{ color: "white" }}>
               Already have an account? Login
+            </Text>
+          </Button>
+          <Button
+            transparent
+            style={{ marginTop: -15 }}
+            onPress={() => this.props.navigation.navigate("RegisterBus")}
+          >
+            <Text style={{ color: "white" }}>
+              Business Owner? Register Here
             </Text>
           </Button>
         </View>
