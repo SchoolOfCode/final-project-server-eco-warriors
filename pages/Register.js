@@ -181,11 +181,10 @@ export default class SignUp extends React.Component {
             <Text style={{ color: "black" }}>Sign up</Text>
           </Button>
           <Button
+            transparent
             style={{
               width: "73%",
-              height: "8%",
-              backgroundColor: "transparent",
-              border: "none"
+              height: "8%"
             }}
             onPress={() => this.props.navigation.navigate("Login")}
           >
