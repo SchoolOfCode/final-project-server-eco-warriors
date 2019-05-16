@@ -3,7 +3,8 @@ import {
   StyleSheet,
   TextInput,
   KeyboardAvoidingView,
-  View
+  View,
+  Picker
 } from "react-native";
 import { LinearGradient } from "expo";
 import { Button, Text } from "@99xt/first-born";
@@ -151,7 +152,23 @@ export default class SignUp extends React.Component {
             value={this.state.businessDescription}
             autoCapitalize="none"
           />
-          <TextInput
+          <Picker
+            placeholder="Choose a category"
+            selectedValue={this.state.language}
+            textStyle={{ fontSize: 100 }}
+            style={{ height: 50, width: 280, color: "white" }}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ language: itemValue })
+            }
+          >
+            <Picker.Item label="Choose a category" value="cat" />
+            <Picker.Item label="Plastics" value="ps" />
+            <Picker.Item label="Clothes" value="ch" />
+            <Picker.Item label="Energy" value="eg" />
+            <Picker.Item label="Cosmetics" value="co" />
+            <Picker.Item label="Meat" value="me" />
+          </Picker>
+          {/* <TextInput
             placeholder="Business Category"
             placeholderTextColor="white"
             style={{
@@ -164,7 +181,8 @@ export default class SignUp extends React.Component {
             onChangeText={category => this.setState({ category })}
             value={this.state.category}
             autoCapitalize="none"
-          />
+          /> */}
+
           <Button
             style={{
               backgroundColor: "white",
