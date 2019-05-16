@@ -86,8 +86,8 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" size="h3">
-            Ecommunity
+          <Text color="white" style={{ fontSize: 20 }}>
+            Personal Registration
           </Text>
           <TextInput
             placeholder="Name"
@@ -188,7 +188,7 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "black" }}>
+            <Text style={{ color: "white" }}>
               Already have an account? Login
             </Text>
           </Button>
