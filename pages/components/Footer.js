@@ -42,13 +42,17 @@ export default class Footer extends Component {
               active
               onPress={() => this.props.navigation.navigate("QR")}
             >
-              <Icon name="camera" />
-              <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
+              <Icon name="barcode" />
+              <Text style={{ color: "black", fontSize: 10 }}>
+                Collect Points
+              </Text>
             </TabItem>
           ) : (
             <TabItem onPress={() => this.props.navigation.navigate("QR")}>
-              <Icon name="camera" />
-              <Text style={{ color: "black", fontSize: 10 }}>QR Code</Text>
+              <Icon name="barcode" />
+              <Text style={{ color: "black", fontSize: 10 }}>
+                Collect Points
+              </Text>
             </TabItem>
           )}
         </TabBar>
