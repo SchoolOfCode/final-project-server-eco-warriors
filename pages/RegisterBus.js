@@ -16,7 +16,6 @@ export default class SignUp extends React.Component {
     businessAddress: "",
     street: "",
     postcode: "",
-    city: "",
     email: "",
     businessDescription: "",
     userType: "business",
@@ -41,7 +40,6 @@ export default class SignUp extends React.Component {
           .set({
             userType: this.state.userType,
             street: this.state.street,
-            city: this.state.city,
             postcode: this.state.postcode,
             category: this.state.category,
             businessName: this.state.businessName,
@@ -69,7 +67,7 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" style={{ fontSize: 20, marginBottom: "5%" }}>
+          <Text color="white" style={{ fontSize: 20, marginBottom: "2%" }}>
             Business Registration
           </Text>
           <TextInput
@@ -126,19 +124,6 @@ export default class SignUp extends React.Component {
             value={this.state.street}
           />
           <TextInput
-            placeholder="City"
-            placeholderTextColor="white"
-            style={{
-              width: "73%",
-              height: "7%",
-              borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
-            }}
-            onChangeText={city => this.setState({ city })}
-            value={this.state.city}
-            autoCapitalize="none"
-          />
-          <TextInput
             placeholder="Postcode"
             placeholderTextColor="white"
             style={{
@@ -172,7 +157,7 @@ export default class SignUp extends React.Component {
             style={{
               width: "73%",
               height: "7%",
-              marginBottom: "15%",
+              marginBottom: "8%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1
             }}
@@ -189,18 +174,13 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black" }}>Sign up</Text>
+            <Text style={{ color: "black" }}>Register</Text>
           </Button>
           <Button
-            style={{
-              width: "73%",
-              height: "8%",
-              backgroundColor: "transparent",
-              border: "none"
-            }}
+            transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "black" }}>
+            <Text style={{ color: "white" }}>
               Already have an account? Login
             </Text>
           </Button>
