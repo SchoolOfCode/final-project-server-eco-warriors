@@ -184,6 +184,15 @@ export default class SignUp extends React.Component {
               Already have an account? Login
             </Text>
           </Button>
+          <Button
+            style={{ marginTop: -15 }}
+            transparent
+            onPress={() => this.props.navigation.navigate("SignUp")}
+          >
+            <Text style={{ color: "white" }}>
+              Not a business? Register here
+            </Text>
+          </Button>
         </KeyboardAwareScrollView>
       </LinearGradient>
     );
