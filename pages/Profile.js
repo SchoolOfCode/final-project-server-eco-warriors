@@ -3,8 +3,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
+import Card from "./components/Card";
 
-import { Text, Card } from "@99xt/first-born";
+import { Text } from "@99xt/first-born";
 import PureChart from "react-native-pure-chart";
 
 export default class Profile extends React.Component {
@@ -90,22 +91,16 @@ export default class Profile extends React.Component {
                 {this.state.points}
               </Text>
             </View>
-            <Text style={{ fontSize: 20, fontWeight: "bold", padding: 5 }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", padding: 5 }}>
               So far you have saved:
             </Text>
           </View>
           <View style={styles.body2}>
-            <Card
-              title="Reduce Plastic"
-              description="This is the description."
-            />
-            <Card title="Reduce Meat" description="This is the description" />
-            <Card title="Eco Cosmetics" description="This is the description" />
-            <Card title="Energy Saving" description="This is the description" />
-            <Card
-              title="Recycle Clothes"
-              description="This is the description"
-            />
+            <Card title="Card" des="this is the des" />
+            <Card title="Card 2" des="this is the des" />
+            <Card title="Card 3" des="this is the des" />
+            <Card title="Card 4" des="this is the des" />
+            <Card title="Card 5" des="this is the des" />
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />

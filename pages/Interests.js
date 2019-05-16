@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, Card } from "@99xt/first-born";
+import { Text } from "@99xt/first-born";
 import Footer from "./components/Footer";
 import Header from "../pages/components/Header";
+import Card from "./components/Card";
 import Carousel from "react-native-carousel-control";
 import {
   StyleSheet,
@@ -251,13 +252,13 @@ export default class Interests extends React.Component {
             source={require("../assets/530878d8-gp0stt3fm.jpg")}
           /> */}
         </View>
-        <ScrollView style={styles.cards}>
+        <ScrollView style={styles.mainContent}>
           {this.state.currentCategory &&
             this.state.currentCategory[0].map((item, idx) => (
               <Card
                 title={item.name}
                 key={idx}
-                description={item.address}
+                des={item.address}
                 onPress={() => this.props.navigation.navigate("BusinessInfo")}
               />
             ))}
@@ -270,27 +271,18 @@ export default class Interests extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // alignItems: "center"
-  },
-  container2: {
     alignItems: "center",
-    justifyContent: "flex-end",
-    backgroundColor: "#FFFFFF",
-    height: "10%",
-    borderTopColor: "grey",
-    borderTopWidth: 1
+    flex: 1
   },
   carousel: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    height: "25%",
     marginLeft: "-20%",
     marginRight: "-20%"
   },
-  cards: {
-    height: "50%",
-    width: "100%",
-    paddingRight: 5
+  mainContent: {
+    height: "80%",
+    width: "100%"
   }
 });
