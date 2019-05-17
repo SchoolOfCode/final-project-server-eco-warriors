@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "@99xt/first-born";
 import Footer from "./components/Footer";
-import Header from "../pages/components/Header";
+import Header from "./components/Header";
 import Card from "./components/Card";
 import Carousel from "react-native-carousel-control";
 import {
@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default class Interests extends React.Component {
+export default class Places extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,7 +113,7 @@ export default class Interests extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="Interests" />
+        <Header title="Places" />
         <View style={styles.carousel}>
           <Carousel
             pageStyle={{
@@ -263,7 +263,7 @@ export default class Interests extends React.Component {
               />
             ))}
         </ScrollView>
-        <Footer {...this.props} active="Interests" />
+        <Footer {...this.props} active="Places" />
       </View>
     );
   }
