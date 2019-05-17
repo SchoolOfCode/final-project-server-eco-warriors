@@ -39,7 +39,10 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <LinearGradient colors={["#a2ea54", "#669335"]} style={{ flex: 1 }}>
+      <LinearGradient
+        colors={["#B7DD63", "#90BC00", "#398900"]}
+        style={{ flex: 1 }}
+      >
         <View style={styles.container}>
           <Image
             style={{
