@@ -25,7 +25,7 @@ export default class BusinessInfo extends React.Component {
               size={25}
               color="white"
               marginLeft={20}
-              onPress={() => this.props.navigation.navigate("Interests")}
+              onPress={() => this.props.navigation.navigate("Places")}
             />
             <Text style={styles.mainTitle}>The Clean Kilo</Text>
           </ImageBackground>

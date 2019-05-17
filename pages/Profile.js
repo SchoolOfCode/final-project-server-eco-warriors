@@ -13,7 +13,9 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      points: ""
+      points: "",
+      pPoints: 20,
+      veganPoints: 50
     };
   }
 
@@ -42,7 +44,13 @@ export default class Profile extends React.Component {
         // An error happened.
       });
   };
+
   render() {
+    let plasticPoints = (this.state.pPoints * 3.64).toFixed(0);
+    let straws = (plasticPoints / 0.4).toFixed(0);
+
+    let vegan = (this.state.veganPoints * 1.9).toFixed(0);
+    let miles = (vegan * 2.32).toFixed(0);
     const { currentUser } = this.state;
     let sampleData = [
       {
@@ -92,15 +100,22 @@ export default class Profile extends React.Component {
               </Text>
             </View>
             <Text style={{ fontSize: 18, fontWeight: "bold", padding: 5 }}>
-              So far you have saved:
+              So far you have prevented:
             </Text>
           </View>
           <View style={styles.body2}>
-            <Card title="Card" des="this is the des" />
-            <Card title="Card 2" des="this is the des" />
-            <Card title="Card 3" des="this is the des" />
-            <Card title="Card 4" des="this is the des" />
-            <Card title="Card 5" des="this is the des" />
+            <Card
+              title="Plastic waste"
+              des={`you have saved ${plasticPoints}g of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
+            />
+            <Card
+              title="Reduced meat"
+              des={`if you had spent this money on meat you would have helped produce ${vegan}kg of C02 from entering the atmosphere thats the same as driving ${miles} miles!`}
+            />
+
+            <Card title="Green energy" des=" you have not yet started using renewable energy" />
+            <Card title="Recycle clothes" des="you have not yet started recycling clothes " />
+            <Card title="Eco cosmetics" des="you have not yet started using enviromentaly friendly products" />
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />
