@@ -8,6 +8,7 @@ import {
   ImageBackground
 } from "react-native";
 
+import { Ionicons } from "@expo/vector-icons";
 import { Button, Input, Text, TabBar, TabItem, Icon } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
@@ -19,6 +20,13 @@ export default class BusinessInfo extends React.Component {
             style={styles.image}
             source={require("../assets/cleankilo.jpeg")}
           >
+            <Ionicons
+              name="md-arrow-back"
+              size={25}
+              color="white"
+              marginLeft={20}
+              onPress={() => this.props.navigation.navigate("Places")}
+            />
             <Text style={styles.mainTitle}>The Clean Kilo</Text>
           </ImageBackground>
           <View style={styles.description}>
@@ -96,7 +104,20 @@ export default class BusinessInfo extends React.Component {
               </View>
             </View>
           </View>
-
+          <View style={styles.divider} />
+          <View style={styles.description}>
+            <Text style={styles.title}>Website</Text>
+            <Text
+            // onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
+            >
+              www.thecleankilo.co.uk/
+            </Text>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.description}>
+            <Text style={styles.title}>Address</Text>
+            <Text>1 Gibb St, Birmingham B9 4BF</Text>
+          </View>
           <Image
             style={styles.image2}
             source={require("../assets/cleankilomap.png")}
@@ -116,7 +137,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontSize: 30,
-    marginLeft: 10,
+    // marginLeft: 10,
     fontWeight: "bold",
     color: "#FFFFFF"
   },
@@ -129,15 +150,17 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 10,
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+    paddingTop: 60,
+    paddingLeft: 10,
     paddingBottom: 10
   },
   image2: {
-    height: 300,
+    height: 200,
     width: "100%",
     borderRadius: 10,
     justifyContent: "center",
-    marginTop: 40
+    marginTop: 20
   },
   description: {
     flexDirection: "column",
@@ -149,6 +172,11 @@ const styles = StyleSheet.create({
     height: "80%",
     width: "100%"
   },
+  websiteContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
@@ -158,6 +186,6 @@ const styles = StyleSheet.create({
   divider: {
     borderBottomColor: "lightgrey",
     borderBottomWidth: 2,
-    margin: 10
+    margin: 20
   }
 });
