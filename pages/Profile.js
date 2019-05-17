@@ -47,27 +47,22 @@ export default class Profile extends React.Component {
     let sampleData = [
       {
         value: 20,
-
         color: "#0b6623"
       },
       {
         value: 20,
-
         color: "#708238"
       },
       {
         value: 20,
-
         color: "#c7ea46"
       },
       {
         value: 20,
-
         color: "#A9BA9D"
       },
       {
         value: 20,
-
         color: "#4B5320"
       }
     ];
@@ -96,11 +91,41 @@ export default class Profile extends React.Component {
             </Text>
           </View>
           <View style={styles.body2}>
-            <Card title="Card" des="this is the des" />
-            <Card title="Card 2" des="this is the des" />
-            <Card title="Card 3" des="this is the des" />
-            <Card title="Card 4" des="this is the des" />
-            <Card title="Card 5" des="this is the des" />
+            <Card
+              icon="bottle-wine"
+              iconSize={35}
+              iconColor="#708238"
+              title="Card"
+              des="this is the des"
+            />
+            <Card
+              icon="food"
+              iconSize={35}
+              iconColor="#0b6623"
+              title="Card 2"
+              des="this is the des"
+            />
+            <Card
+              icon="lightbulb-on"
+              iconSize={35}
+              iconColor="#c7ea46"
+              title="Card 3"
+              des="this is the des"
+            />
+            <Card
+              icon="tshirt-crew"
+              iconSize={35}
+              iconColor="#A9BA9D"
+              title="Card 4"
+              des="this is the des"
+            />
+            <Card
+              icon="brush"
+              iconSize={35}
+              iconColor="#4B5320"
+              title="Card 5"
+              des="this is the des"
+            />
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />
