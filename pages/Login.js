@@ -52,6 +52,7 @@ export default class Login extends React.Component {
           />
           <TextInput
             placeholder="Email"
+            placeholderTextSize-="20"
             placeholderTextColor="#FFFFFF"
             style={{
               width: "73%",
