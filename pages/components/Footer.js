@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     backgroundColor: "#FFFFFF",
-    height: "10%",
-    borderTopColor: "grey",
+    height: "9%",
+    borderTopColor: "lightgrey",
     borderTopWidth: 1
   }
 });

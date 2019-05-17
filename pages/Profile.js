@@ -47,27 +47,27 @@ export default class Profile extends React.Component {
     let sampleData = [
       {
         value: 20,
-        label: "Reduce Plastic",
+
         color: "#0b6623"
       },
       {
         value: 20,
-        label: "Reduce Meat",
+
         color: "#708238"
       },
       {
         value: 20,
-        label: "Eco Cosmetics",
+
         color: "#c7ea46"
       },
       {
         value: 20,
-        label: "Recycle Clothes",
+
         color: "#A9BA9D"
       },
       {
         value: 20,
-        label: "Energy Saving",
+
         color: "#4B5320"
       }
     ];

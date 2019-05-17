@@ -235,33 +235,19 @@ export default class Places extends React.Component {
               </ImageBackground>
             </TouchableOpacity>
           </Carousel>
-          {/* <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          /> */}
         </View>
         <ScrollView style={styles.mainContent}>
-          {this.state.currentCategory &&
-            this.state.currentCategory[0].map((item, idx) => (
-              <Card
-                title={item.name}
-                key={idx}
-                des={item.address}
-                onPress={() => this.props.navigation.navigate("BusinessInfo")}
-              />
-            ))}
+          <View style={{ padding: 5 }}>
+            {this.state.currentCategory &&
+              this.state.currentCategory[0].map((item, idx) => (
+                <Card
+                  title={item.name}
+                  key={idx}
+                  des={item.address}
+                  onPress={() => this.props.navigation.navigate("BusinessInfo")}
+                />
+              ))}
+          </View>
         </ScrollView>
         <Footer {...this.props} active="Places" />
       </View>
@@ -282,7 +268,8 @@ const styles = StyleSheet.create({
     marginRight: "-20%"
   },
   mainContent: {
-    height: "80%",
-    width: "100%"
+    height: "100%",
+    width: "100%",
+    paddingBottom: 10
   }
 });
