@@ -7,7 +7,7 @@ export default class Card extends Component {
   render() {
     return (
       <View style={styles.card}>
-        <View style={{ marginRight: 17 }}>
+        <View style={{ marginRight: 15 }}>
           <MaterialCommunityIcons
             name={this.props.icon}
             size={this.props.iconSize}

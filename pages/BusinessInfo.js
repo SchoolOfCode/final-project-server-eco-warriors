@@ -5,11 +5,13 @@ import {
   View,
   ScrollView,
   Image,
-  ImageBackground
+  ImageBackground,
+  Linking,
+  TouchableOpacity
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-import { Button, Input, Text, TabBar, TabItem, Icon } from "@99xt/first-born";
+import { Text } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
   render() {
@@ -29,22 +31,22 @@ export default class BusinessInfo extends React.Component {
             style={styles.image}
             source={require("../assets/cleankilo.jpeg")}
           >
-            <Ionicons
-              name="md-arrow-back"
-              size={25}
-              color="white"
-              marginLeft={20}
-              onPress={() => this.props.navigation.navigate("Places")}
-            />
+            <TouchableOpacity>
+              <Ionicons
+                style={{ marginLeft: 15 }}
+                name="md-arrow-back"
+                size={30}
+                color="white"
+                onPress={() => this.props.navigation.navigate("Places")}
+              />
+            </TouchableOpacity>
             <Text style={styles.mainTitle}>The Clean Kilo</Text>
           </ImageBackground>
           <View style={styles.description}>
             <Text style={styles.title}>Description</Text>
-            <Text>0 waste plastic reduction shop</Text>
+            <Text>Zero waste plastic reduction shop</Text>
           </View>
-
           <View style={styles.divider} />
-
           <View style={styles.description}>
             <Text style={styles.title}>Opening Times </Text>
             <View>
@@ -64,21 +66,29 @@ export default class BusinessInfo extends React.Component {
           <View style={styles.divider} />
           <View style={styles.description}>
             <Text style={styles.title}>Website</Text>
-            <Text
-            // onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
+            <TouchableOpacity
+              onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
             >
-              www.thecleankilo.co.uk/
-            </Text>
+              <Text>www.thecleankilo.co.uk</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.divider} />
           <View style={styles.description}>
             <Text style={styles.title}>Address</Text>
-            <Text>1 Gibb St, Birmingham B9 4BF</Text>
+            <Text>1 Gibb St, Birmingham, B9 4BF</Text>
           </View>
-          <Image
-            style={styles.image2}
-            source={require("../assets/cleankilomap.png")}
-          />
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
+              )
+            }
+          >
+            <Image
+              style={styles.image2}
+              source={require("../assets/cleankilomap.png")}
+            />
+          </TouchableOpacity>
         </ScrollView>
         <Footer {...this.props} />
       </View>
@@ -94,7 +104,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontSize: 30,
-    // marginLeft: 10,
+    marginLeft: 15,
     fontWeight: "bold",
     color: "#FFFFFF"
   },
@@ -109,7 +119,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     paddingTop: 60,
-    paddingLeft: 10,
     paddingBottom: 10
   },
   image2: {

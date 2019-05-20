@@ -104,6 +104,7 @@ export default class Profile extends React.Component {
             <Card
               icon="bottle-wine"
               iconSize={35}
+
               iconColor="#708238"
               title={`Plastic waste - ${plasticPoints}g`}
               des={` Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
@@ -118,14 +119,14 @@ export default class Profile extends React.Component {
             <Card
               icon="lightbulb-on"
               iconSize={35}
-              iconColor="#c7ea46"
+              iconColor="#708238"
               title="Green energy"
               des="you have not yet started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
-              iconColor="#A9BA9D"
+              iconColor="#0b6623"
               title="Recycle clothes"
               des="you have not yet started recycling clothes "
             />
