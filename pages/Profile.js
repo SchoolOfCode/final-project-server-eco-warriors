@@ -14,7 +14,7 @@ export default class Profile extends React.Component {
     this.state = {
       name: "",
       points: "",
-      pPoints: 20,
+      pPoints: 50,
       veganPoints: 50
     };
   }
@@ -54,23 +54,25 @@ export default class Profile extends React.Component {
     const { currentUser } = this.state;
     let sampleData = [
       {
-        value: 20,
+        value: this.state.pPoints,
+        label: "Plastic",
         color: "#0b6623"
       },
       {
-        value: 20,
+        value: this.state.veganPoints,
+        label: "meat",
         color: "#708238"
       },
       {
-        value: 20,
+        value: 0,
         color: "#c7ea46"
       },
       {
-        value: 20,
+        value: 0,
         color: "#A9BA9D"
       },
       {
-        value: 20,
+        value: 0,
         color: "#4B5320"
       }
     ];
@@ -102,16 +104,17 @@ export default class Profile extends React.Component {
             <Card
               icon="bottle-wine"
               iconSize={35}
-              iconColor="#c7ea46"
-              title="Plastic waste"
-              des={`you have saved ${plasticPoints}g of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
+
+              iconColor="#708238"
+              title={`Plastic waste - ${plasticPoints}g`}
+              des={` Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
               icon="food"
               iconSize={35}
-              iconColor="#A9BA9D"
-              title="Reduced meat"
-              des={`if you had spent this money on meat you would have helped produce ${vegan}kg of C02 from entering the atmosphere thats the same as driving ${miles} miles!`}
+              iconColor="#0b6623"
+              title={`Reduce meat - ${vegan}kg`}
+              des={` Of C02 from entering the atmosphere, equal to driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"

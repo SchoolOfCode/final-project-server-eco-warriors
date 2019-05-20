@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   body: {
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     height: "85%",
     padding: "10%",
     fontSize: 100

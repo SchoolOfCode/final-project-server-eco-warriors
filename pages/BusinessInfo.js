@@ -15,6 +15,15 @@ import { Text } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
   render() {
+    const openingTimes = [
+      { day: "Monday", open: "Closed" },
+      { day: "Tuesday", open: "10am -7pm" },
+      { day: "Wednesday", open: "10am -7pm" },
+      { day: "Thursday", open: "10am -7pm" },
+      { day: "Friday", open: "10am -7pm" },
+      { day: "Saturday", open: "9am -6:30pm" },
+      { day: "Sunday", open: "12pm -6pm" }
+    ];
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scroll}>
@@ -41,69 +50,17 @@ export default class BusinessInfo extends React.Component {
           <View style={styles.description}>
             <Text style={styles.title}>Opening Times </Text>
             <View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Monday</Text>
-                <Text style={{ marginRight: 10 }}>Closed</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Tuesday</Text>
-                <Text style={{ marginRight: 10 }}>10:00am -7:00pm</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Wednesday</Text>
-                <Text style={{ marginRight: 10 }}>10:00am -7:00pm</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Thursday</Text>
-                <Text style={{ marginRight: 10 }}>10:00am -7:00pm</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Friday</Text>
-                <Text style={{ marginRight: 10 }}>10:00am -7:00pm</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Saturday</Text>
-                <Text style={{ marginRight: 10 }}>9:00am - 6:30pm</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
-              >
-                <Text>Sunday</Text>
-                <Text style={{ marginRight: 10 }}>Closed</Text>
-              </View>
+              {openingTimes.map((selection, index) => (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between"
+                  }}
+                >
+                  <Text>{selection.day}</Text>
+                  <Text style={{ marginRight: 10 }}>{selection.open}</Text>
+                </View>
+              ))}
             </View>
           </View>
           <View style={styles.divider} />
