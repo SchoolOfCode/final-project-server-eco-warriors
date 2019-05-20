@@ -34,6 +34,12 @@ export default class BusinessPointsPage extends React.Component {
     }));
   };
 
+  handleBack = () => {
+    this.setState(() => ({
+      scanned: false
+    }));
+  };
+
   handleScan = ({ data }) => {
     console.log("I have scanned");
     firebase
@@ -55,7 +61,17 @@ export default class BusinessPointsPage extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header title="Points Page" isLoggedIn={true} />
+        {scanned ? (
+          <Header
+            title="Points Page"
+            isLoggedIn={true}
+            back
+            onBack={this.handleBack}
+          />
+        ) : (
+          <Header title="Points Page" isLoggedIn={true} />
+        )}
+
         <ScrollView contentContainerStyle={styles.body}>
           {scanned ? (
             <>

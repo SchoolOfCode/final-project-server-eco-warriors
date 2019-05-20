@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import firebase from "firebase";
 import { LinearGradient } from "expo";
 
@@ -25,12 +25,22 @@ export default class Header extends React.Component {
         style={styles.header}
       >
         <View style={styles.header2}>
-          <Feather
-            name="log-out"
-            size={1}
-            color="#669335"
-            style={{ marginRight: 28 }}
-          />
+          {this.props.back ? (
+            <Ionicons
+              name="md-arrow-back"
+              size={28}
+              color="white"
+              marginLeft={20}
+              onPress={this.props.onBack}
+            />
+          ) : (
+            <Feather
+              name="log-out"
+              size={1}
+              color="#669335"
+              style={{ marginRight: 28 }}
+            />
+          )}
           <Text style={{ color: "white", fontSize: 20 }}>
             {this.props.title}
           </Text>
