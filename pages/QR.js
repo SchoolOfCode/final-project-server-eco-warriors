@@ -16,7 +16,7 @@ export default class QR extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="QR Code" />
+        <Header title="Collect Points" />
         <Text style={styles.description}>
           Show this at the till to collect points
         </Text>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   mainContent: {
-    height: "67%",
+    height: "68%",
     width: "100%",
     paddingTop: "8%",
     paddingLeft: "8%"

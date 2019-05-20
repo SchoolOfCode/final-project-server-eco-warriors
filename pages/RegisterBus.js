@@ -58,7 +58,7 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <LinearGradient colors={["#a2ea54", "#669335"]} style={{ flex: 1 }}>
-        <KeyboardAwareScrollView
+        <ScrollView
           style={styles.container}
           resetScrollToCoords={{ x: 0, y: 0 }}
           scrollEnabled={false}
@@ -210,7 +210,7 @@ export default class SignUp extends React.Component {
               Not a business? Register here
             </Text>
           </Button>
-        </KeyboardAwareScrollView>
+        </ScrollView>
       </LinearGradient>
     );
   }

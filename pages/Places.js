@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "@99xt/first-born";
 import Footer from "./components/Footer";
-import Header from "../pages/components/Header";
+import Header from "./components/Header";
 import Card from "./components/Card";
 import Carousel from "react-native-carousel-control";
 import {
@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default class Interests extends React.Component {
+export default class Places extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,7 +113,7 @@ export default class Interests extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="Interests" />
+        <Header title="Places" />
         <View style={styles.carousel}>
           <Carousel
             pageStyle={{
@@ -235,35 +235,21 @@ export default class Interests extends React.Component {
               </ImageBackground>
             </TouchableOpacity>
           </Carousel>
-          {/* <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          /> */}
         </View>
         <ScrollView style={styles.mainContent}>
-          {this.state.currentCategory &&
-            this.state.currentCategory[0].map((item, idx) => (
-              <Card
-                title={item.name}
-                key={idx}
-                des={item.address}
-                onPress={() => this.props.navigation.navigate("BusinessInfo")}
-              />
-            ))}
+          <View style={{ padding: 5 }}>
+            {this.state.currentCategory &&
+              this.state.currentCategory[0].map((item, idx) => (
+                <TouchableOpacity
+                  key={idx}
+                  onPress={() => this.props.navigation.navigate("BusinessInfo")}
+                >
+                  <Card title={item.name} key={idx} des={item.address} />
+                </TouchableOpacity>
+              ))}
+          </View>
         </ScrollView>
-        <Footer {...this.props} active="Interests" />
+        <Footer {...this.props} active="Places" />
       </View>
     );
   }
@@ -282,7 +268,8 @@ const styles = StyleSheet.create({
     marginRight: "-20%"
   },
   mainContent: {
-    height: "80%",
-    width: "100%"
+    height: "100%",
+    width: "100%",
+    paddingBottom: 10
   }
 });

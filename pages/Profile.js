@@ -55,27 +55,22 @@ export default class Profile extends React.Component {
     let sampleData = [
       {
         value: 20,
-        label: "Reduce Plastic",
         color: "#0b6623"
       },
       {
         value: 20,
-        label: "Reduce Meat",
         color: "#708238"
       },
       {
         value: 20,
-        label: "Eco Cosmetics",
         color: "#c7ea46"
       },
       {
         value: 20,
-        label: "Recycle Clothes",
         color: "#A9BA9D"
       },
       {
         value: 20,
-        label: "Energy Saving",
         color: "#4B5320"
       }
     ];
@@ -105,17 +100,42 @@ export default class Profile extends React.Component {
           </View>
           <View style={styles.body2}>
             <Card
+
+              icon="bottle-wine"
+              iconSize={35}
+              iconColor="#708238"
               title="Plastic waste"
               des={`you have saved ${plasticPoints}g of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
+              icon="food"
+              iconSize={35}
+              iconColor="#0b6623"
               title="Reduced meat"
               des={`if you had spent this money on meat you would have helped produce ${vegan}kg of C02 from entering the atmosphere thats the same as driving ${miles} miles!`}
             />
+            <Card
+              icon="lightbulb-on"
+              iconSize={35}
+              iconColor="#c7ea46"
+              title="Green energy"
+              des="you have not yet started using renewable energy"
+            />
+            <Card
+              icon="tshirt-crew"
+              iconSize={35}
+              iconColor="#A9BA9D"
+              title="Recycle clothes"
+              des="you have not yet started recycling clothes "
+            />
+            <Card
+              icon="brush"
+              iconSize={35}
+              iconColor="#4B5320"
+              title="Eco cosmetics"
+              des="you have not yet started using enviromentaly friendly products"
+            />
 
-            <Card title="Green energy" des=" you have not yet started using renewable energy" />
-            <Card title="Recycle clothes" des="you have not yet started recycling clothes " />
-            <Card title="Eco cosmetics" des="you have not yet started using enviromentaly friendly products" />
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />
