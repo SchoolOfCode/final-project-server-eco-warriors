@@ -1,15 +1,16 @@
 import React from "react";
 import firebase from "firebase";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, ScrollView } from "react-native";
 import Header from "./components/Header";
 import { Button, Text } from "@99xt/first-born";
+import { Ionicons } from "@expo/vector-icons";
 import { Constants, Permissions, BarCodeScanner } from "expo";
 
 export default class BusinessPointsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      points: 0,
+      points: "",
       hasCameraPermission: true,
       scanned: false,
       userID: "",
@@ -17,6 +18,9 @@ export default class BusinessPointsPage extends React.Component {
       usersName: ""
     };
   }
+
+  //put a back button
+  // have a handle back and set the state to false
 
   handleSubmit = () => {
     let newPoints =
@@ -27,6 +31,12 @@ export default class BusinessPointsPage extends React.Component {
       .update({ points: newPoints });
     this.setState(() => ({
       currentPoints: newPoints
+    }));
+  };
+
+  handleBack = () => {
+    this.setState(() => ({
+      scanned: false
     }));
   };
 
@@ -51,35 +61,79 @@ export default class BusinessPointsPage extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header title="Points Page" isLoggedIn={true} />
-        <View style={styles.body}>
+        {scanned ? (
+          <Header
+            title="Points Page"
+            isLoggedIn={true}
+            back
+            onBack={this.handleBack}
+          />
+        ) : (
+          <Header title="Points Page" isLoggedIn={true} />
+        )}
+
+        <ScrollView contentContainerStyle={styles.body}>
           {scanned ? (
             <>
-              <Text>How much has {this.state.usersName} spent today?</Text>
-              <TextInput
-                placeholder="Please enter points here"
-                placeholderTextColor="#a0a2a5"
+              <Text
                 style={{
-                  width: "73%",
-                  height: "7%",
-                  borderColor: "#a0a2a5",
-                  borderBottomWidth: 1
+                  fontSize: 25,
+                  marginBottom: "20%",
+                  fontWeight: "bold",
+                  textAlign: "center"
                 }}
-                keyboardType="numeric"
+              >
+                How much has {this.state.usersName} spent today?
+              </Text>
+              {/* <Ionicons
+                name="md-arrow-back"
+                size={25}
+                color="black"
+                marginLeft={20}
+                onPress={() => this.props.navigation.navigate("")}
+              /> */}
+              <TextInput
+                style={{
+                  marginBottom: 40,
+                  borderRadius: 4,
+                  //   borderWidth: 0.5,
+                  //   borderBottomColor: "#FFFFFF",
+                  //   borderColor: "#d6d7da",
+                  textAlign: "center"
+                }}
+                placeholder="Please enter points here"
+                placeholderTextColor="green"
+                keyboardType="number-pad"
                 autoCapitalize="none"
                 onChangeText={points => this.setState({ points })}
                 value={String(this.state.points)}
               />
               <Button
-                style={{
-                  backgroundColor: "white",
-                  width: "73%",
-                  height: "8%",
-                  borderRadius: 30
-                }}
+                style={{ backgroundColor: "#398900" }}
+                // style={{
+                //   backgroundColor: "#398900",
+                //   width: "73%",
+                //   height: "20%",
+                //   borderRadius: 30,
+                //   marginTop: 80,
+                //   //   justifyContent: "center",
+                //   //   alignItems: "center",
+                //   marginLeft: "8%",
+                //   color: "#f74923"
+                // }}
                 onPress={() => this.handleSubmit()}
               >
-                <Text style={{ color: "black" }}>Submit points</Text>
+                <Text
+                //   style={{
+                //     color: "white",
+                //     textAlign: "center",
+                //     alignItems: "center",
+                //     // fontWeight: "bold",
+                //     marginRight: "16%"
+                //   }}
+                >
+                  Submit points
+                </Text>
               </Button>
             </>
           ) : (
@@ -89,7 +143,7 @@ export default class BusinessPointsPage extends React.Component {
               style={{ height: 300, width: 300 }}
             />
           )}
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -99,18 +153,14 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    height: "100%"
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
+    height: "100%",
+    flexDirection: "column"
   },
   body: {
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     height: "85%",
-    padding: "10%"
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
+    padding: "10%",
+    fontSize: 100
   }
 });

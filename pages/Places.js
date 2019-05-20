@@ -233,10 +233,8 @@ export default class Places extends React.Component {
           <View style={{ padding: 5 }}>
             {this.state.currentCategory ? (
               this.state.currentCategory[0].map((item, idx) => (
-                <Card
-                  title={item.name}
+                <TouchableOpacity
                   key={idx}
-                  des={item.address}
                   onPress={() => this.props.navigation.navigate("BusinessInfo")}
                 />
               ))
@@ -252,6 +250,10 @@ export default class Places extends React.Component {
                 Please select a category from above to view relevant businesses
               </Text>
             )}
+                >
+                  <Card title={item.name} key={idx} des={item.address} />
+                </TouchableOpacity>
+              ))}
           </View>
         </ScrollView>
         <Footer {...this.props} active="Places" />

@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import { Text } from "@99xt/first-born";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default class Card extends Component {
   render() {
     return (
       <View style={styles.card}>
-        <View>{this.props.icon}</View>
-        <View>
+        <View style={{ marginRight: 15 }}>
+          <MaterialCommunityIcons
+            name={this.props.icon}
+            size={this.props.iconSize}
+            color={this.props.iconColor}
+          />
+        </View>
+        <View style={{ marginRight: 45 }}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             {this.props.title}
           </Text>
@@ -22,6 +29,7 @@ export default class Card extends Component {
 
 const styles = StyleSheet.create({
   card: {
+    flexDirection: "row",
     borderWidth: 1,
     borderRadius: 3,
     borderColor: "white",
