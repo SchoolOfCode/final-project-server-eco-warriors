@@ -87,7 +87,7 @@ export default class BusinessInfo extends React.Component {
               style={{
                 backgroundColor: "green",
                 width: "65%",
-                height: "12%",
+                height: "11%",
                 borderRadius: 30
               }}
               onPress={() =>
