@@ -56,12 +56,12 @@ export default class BusinessPointsPage extends React.Component {
     return (
       <View style={styles.container}>
         <Header title="Points Page" isLoggedIn={true} />
-        <ScrollView style={styles.body}>
+        <ScrollView contentContainerStyle={styles.body}>
           {scanned ? (
             <>
               <Text
                 style={{
-                  fontSize: "25",
+                  fontSize: 25,
                   marginBottom: "20%",
                   fontWeight: "bold",
                   textAlign: "center"
