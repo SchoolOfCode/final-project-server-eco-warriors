@@ -14,8 +14,11 @@ export default class Profile extends React.Component {
     this.state = {
       name: "",
       points: "",
-      pPoints: 50,
-      veganPoints: 50
+      plasticPoints: 35,
+      meatPoints: 30,
+      energyPoints: 0,
+      clothingPoints: 0,
+      cosmeticsPoints: 0
     };
   }
 
@@ -46,33 +49,36 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    let plasticPoints = (this.state.pPoints * 3.64).toFixed(0);
-    let straws = (plasticPoints / 0.4).toFixed(0);
+    let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
+    let straws = (plastic / 0.4).toFixed(0);
 
-    let vegan = (this.state.veganPoints * 1.9).toFixed(0);
-    let miles = (vegan * 2.32).toFixed(0);
+    let meat = (this.state.meatPoints * 1.9).toFixed(0);
+    let miles = (meat * 2.32).toFixed(0);
     const { currentUser } = this.state;
     let sampleData = [
       {
-        value: this.state.pPoints,
+        value: this.state.plasticPoints,
         label: "Plastic",
-        color: "#0b6623"
-      },
-      {
-        value: this.state.veganPoints,
-        label: "meat",
-        color: "#708238"
-      },
-      {
-        value: 0,
         color: "#c7ea46"
       },
       {
-        value: 0,
+        value: this.state.meatPoints,
+        label: "Meat",
         color: "#A9BA9D"
       },
       {
-        value: 0,
+        value: this.state.energyPoints,
+        label: "Energy",
+        color: "#708238"
+      },
+      {
+        value: this.state.clothingPoints,
+        label: "Clothing",
+        color: "#0b6623"
+      },
+      {
+        value: this.state.cosmeticsPoints,
+        label: "Cosmetics",
         color: "#4B5320"
       }
     ];
@@ -104,37 +110,36 @@ export default class Profile extends React.Component {
             <Card
               icon="bottle-wine"
               iconSize={35}
-
-              iconColor="#708238"
-              title={`Plastic waste - ${plasticPoints}g`}
+              iconColor="#c7ea46"
+              title={`Plastic Waste - ${plastic}g`}
               des={` Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
               icon="food"
               iconSize={35}
-              iconColor="#0b6623"
-              title={`Reduce meat - ${vegan}kg`}
+              iconColor="#A9BA9D"
+              title={`Reduce Meat - ${meat}kg`}
               des={` Of C02 from entering the atmosphere, equal to driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"
               iconSize={35}
               iconColor="#708238"
-              title="Green energy"
+              title="Green Energy"
               des="you have not yet started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
               iconColor="#0b6623"
-              title="Recycle clothes"
+              title="Recycle Clothes"
               des="you have not yet started recycling clothes "
             />
             <Card
               icon="brush"
               iconSize={35}
               iconColor="#4B5320"
-              title="Eco cosmetics"
+              title="Eco Cosmetics"
               des="you have not yet started using enviromentaly friendly products"
             />
           </View>

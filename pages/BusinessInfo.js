@@ -17,12 +17,12 @@ export default class BusinessInfo extends React.Component {
   render() {
     const openingTimes = [
       { day: "Monday", open: "Closed" },
-      { day: "Tuesday", open: "10am -7pm" },
-      { day: "Wednesday", open: "10am -7pm" },
-      { day: "Thursday", open: "10am -7pm" },
-      { day: "Friday", open: "10am -7pm" },
-      { day: "Saturday", open: "9am -6:30pm" },
-      { day: "Sunday", open: "12pm -6pm" }
+      { day: "Tuesday", open: "10:00am -7:00pm" },
+      { day: "Wednesday", open: "10:00am -7:00pm" },
+      { day: "Thursday", open: "10:00am -7:00pm" },
+      { day: "Friday", open: "10:00am -7:00pm" },
+      { day: "Saturday", open: "9:00am -6:30pm" },
+      { day: "Sunday", open: "12:00pm -6:00pm" }
     ];
     return (
       <View style={styles.container}>
@@ -52,6 +52,7 @@ export default class BusinessInfo extends React.Component {
             <View>
               {openingTimes.map((selection, index) => (
                 <View
+                  key={index}
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between"
