@@ -13,7 +13,9 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      points: ""
+      points: "",
+      pPoints: 20,
+      veganPoints: 50
     };
   }
 
@@ -42,7 +44,13 @@ export default class Profile extends React.Component {
         // An error happened.
       });
   };
+
   render() {
+    let plasticPoints = (this.state.pPoints * 3.64).toFixed(0);
+    let straws = (plasticPoints / 0.4).toFixed(0);
+
+    let vegan = (this.state.veganPoints * 1.9).toFixed(0);
+    let miles = (vegan * 2.32).toFixed(0);
     const { currentUser } = this.state;
     let sampleData = [
       {
@@ -87,45 +95,47 @@ export default class Profile extends React.Component {
               </Text>
             </View>
             <Text style={{ fontSize: 18, fontWeight: "bold", padding: 5 }}>
-              So far you have saved:
+              So far you have prevented:
             </Text>
           </View>
           <View style={styles.body2}>
             <Card
+
               icon="bottle-wine"
               iconSize={35}
               iconColor="#708238"
-              title="Card"
-              des="this is the des"
+              title="Plastic waste"
+              des={`you have saved ${plasticPoints}g of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
               icon="food"
               iconSize={35}
               iconColor="#0b6623"
-              title="Card 2"
-              des="this is the des"
+              title="Reduced meat"
+              des={`if you had spent this money on meat you would have helped produce ${vegan}kg of C02 from entering the atmosphere thats the same as driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"
               iconSize={35}
               iconColor="#c7ea46"
-              title="Card 3"
-              des="this is the des"
+              title="Green energy"
+              des="you have not yet started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
               iconColor="#A9BA9D"
-              title="Card 4"
-              des="this is the des"
+              title="Recycle clothes"
+              des="you have not yet started recycling clothes "
             />
             <Card
               icon="brush"
               iconSize={35}
               iconColor="#4B5320"
-              title="Card 5"
-              des="this is the des"
+              title="Eco cosmetics"
+              des="you have not yet started using enviromentaly friendly products"
             />
+
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />
