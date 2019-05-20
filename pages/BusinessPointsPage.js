@@ -78,19 +78,12 @@ export default class BusinessPointsPage extends React.Component {
               /> */}
               <TextInput
                 style={{
-                  //   marginTop: "20%",
-                  width: "25%",
-                  height: "40%",
-                  borderBottomColor: "#FFFFFF",
-                  borderBottomWidth: 1,
-                  zIndex: 1,
-                  fontSize: "18",
-                  //   textAlign: "center",
-                  //   alignItems: "center",
-                  //   justifyContent: "center",
-
-                  marginLeft: "7%",
-                  borderColor: "green"
+                  marginBottom: 40,
+                  borderRadius: 4,
+                  //   borderWidth: 0.5,
+                  //   borderBottomColor: "#FFFFFF",
+                  //   borderColor: "#d6d7da",
+                  textAlign: "center"
                 }}
                 placeholder="Please enter points here"
                 placeholderTextColor="green"
@@ -100,27 +93,28 @@ export default class BusinessPointsPage extends React.Component {
                 value={String(this.state.points)}
               />
               <Button
-                style={{
-                  backgroundColor: "#398900",
-                  width: "73%",
-                  height: "20%",
-                  borderRadius: 30,
-                  marginTop: 80,
-                  //   justifyContent: "center",
-                  //   alignItems: "center",
-                  marginLeft: "8%",
-                  color: "#f74923"
-                }}
+                style={{ backgroundColor: "#398900" }}
+                // style={{
+                //   backgroundColor: "#398900",
+                //   width: "73%",
+                //   height: "20%",
+                //   borderRadius: 30,
+                //   marginTop: 80,
+                //   //   justifyContent: "center",
+                //   //   alignItems: "center",
+                //   marginLeft: "8%",
+                //   color: "#f74923"
+                // }}
                 onPress={() => this.handleSubmit()}
               >
                 <Text
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-                    alignItems: "center",
-                    // fontWeight: "bold",
-                    marginRight: "16%"
-                  }}
+                //   style={{
+                //     color: "white",
+                //     textAlign: "center",
+                //     alignItems: "center",
+                //     // fontWeight: "bold",
+                //     marginRight: "16%"
+                //   }}
                 >
                   Submit points
                 </Text>
@@ -145,10 +139,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: "100%",
     flexDirection: "column"
-
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   },
   body: {
     justifyContent: "center",
@@ -156,8 +146,5 @@ const styles = StyleSheet.create({
     height: "85%",
     padding: "10%",
     fontSize: 100
-    // borderColor: "red",
-    // borderStyle: "solid",
-    // borderWidth: 2
   }
 });
