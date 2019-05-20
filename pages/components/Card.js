@@ -14,7 +14,7 @@ export default class Card extends Component {
             color={this.props.iconColor}
           />
         </View>
-        <View>
+        <View style={{ marginRight: 45 }}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             {this.props.title}
           </Text>

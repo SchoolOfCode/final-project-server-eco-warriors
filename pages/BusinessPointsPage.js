@@ -61,7 +61,7 @@ export default class BusinessPointsPage extends React.Component {
             <>
               <Text
                 style={{
-                  fontSize: "25",
+                  fontSize: 25,
                   marginBottom: "20%",
                   fontWeight: "bold",
                   textAlign: "center"
@@ -141,8 +141,8 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   body: {
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     height: "85%",
     padding: "10%",
     fontSize: 100
