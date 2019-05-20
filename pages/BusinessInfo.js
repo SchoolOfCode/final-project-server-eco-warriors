@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-import { Text } from "@99xt/first-born";
+import { Text, Button } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
   render() {
@@ -78,18 +78,27 @@ export default class BusinessInfo extends React.Component {
             <Text style={styles.title}>Address</Text>
             <Text>1 Gibb St, Birmingham, B9 4BF</Text>
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
-              )
-            }
-          >
+          <View style={{ alignItems: "center" }}>
             <Image
               style={styles.image2}
               source={require("../assets/cleankilomap.png")}
             />
-          </TouchableOpacity>
+            <Button
+              style={{
+                backgroundColor: "green",
+                width: "65%",
+                height: "11%",
+                borderRadius: 30
+              }}
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
+                )
+              }
+            >
+              <Text style={{ color: "white" }}>Directions</Text>
+            </Button>
+          </View>
         </ScrollView>
         <Footer {...this.props} />
       </View>
