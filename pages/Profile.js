@@ -100,31 +100,30 @@ export default class Profile extends React.Component {
           </View>
           <View style={styles.body2}>
             <Card
-
               icon="bottle-wine"
               iconSize={35}
-              iconColor="#708238"
+              iconColor="#c7ea46"
               title="Plastic waste"
               des={`you have saved ${plasticPoints}g of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
               icon="food"
               iconSize={35}
-              iconColor="#0b6623"
+              iconColor="#A9BA9D"
               title="Reduced meat"
               des={`if you had spent this money on meat you would have helped produce ${vegan}kg of C02 from entering the atmosphere thats the same as driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"
               iconSize={35}
-              iconColor="#c7ea46"
+              iconColor="#708238"
               title="Green energy"
               des="you have not yet started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
-              iconColor="#A9BA9D"
+              iconColor="#0b6623"
               title="Recycle clothes"
               des="you have not yet started recycling clothes "
             />
@@ -135,7 +134,6 @@ export default class Profile extends React.Component {
               title="Eco cosmetics"
               des="you have not yet started using enviromentaly friendly products"
             />
-
           </View>
         </ScrollView>
         <Footer {...this.props} active="Profile" />
