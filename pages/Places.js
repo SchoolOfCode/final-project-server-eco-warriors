@@ -236,7 +236,9 @@ export default class Places extends React.Component {
                 <TouchableOpacity
                   key={idx}
                   onPress={() => this.props.navigation.navigate("BusinessInfo")}
-                />
+                >
+                  <Card title={item.name} key={idx} des={item.address} />
+                </TouchableOpacity>
               ))
             ) : (
               <Text
@@ -250,10 +252,6 @@ export default class Places extends React.Component {
                 Please select a category from above to view relevant businesses
               </Text>
             )}
-                >
-                  <Card title={item.name} key={idx} des={item.address} />
-                </TouchableOpacity>
-              ))}
           </View>
         </ScrollView>
         <Footer {...this.props} active="Places" />
