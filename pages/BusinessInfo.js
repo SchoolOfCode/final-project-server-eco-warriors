@@ -70,7 +70,15 @@ export default class BusinessInfo extends React.Component {
             <TouchableOpacity
               onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
             >
-              <Text>www.thecleankilo.co.uk</Text>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  textDecorationColor: "red",
+                  fontSize: 15
+                }}
+              >
+                www.thecleankilo.co.uk
+              </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.divider} />
@@ -78,16 +86,24 @@ export default class BusinessInfo extends React.Component {
             <Text style={styles.title}>Address</Text>
             <Text>1 Gibb St, Birmingham, B9 4BF</Text>
           </View>
-          <View style={{ alignItems: "center" }}>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
+              )
+            }
+          >
             <Image
               style={styles.image2}
               source={require("../assets/cleankilomap.png")}
             />
+          </TouchableOpacity>
+          <View style={{ alignItems: "center", padding: 10 }}>
             <Button
               style={{
                 backgroundColor: "green",
                 width: "65%",
-                height: "11%",
+                height: "17%",
                 borderRadius: 30
               }}
               onPress={() =>
