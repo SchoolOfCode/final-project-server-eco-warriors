@@ -9,7 +9,7 @@ import {
 import Loading from "./pages/Loading";
 import SignUp from "./pages/Register";
 import Login from "./pages/Login";
-import Interests from "./pages/Interests";
+import Places from "./pages/Places";
 import Profile from "./pages/Profile";
 import RegisterBus from "./pages/RegisterBus";
 import BusinessPointsPage from "./pages/BusinessPointsPage";
@@ -25,7 +25,7 @@ const AppNavigator = createAppContainer(
       Login,
       SignUp,
       Profile,
-      Interests,
+      Places,
       RegisterBus,
       BusinessPointsPage,
       BusinessInfo,
@@ -35,10 +35,6 @@ const AppNavigator = createAppContainer(
       initialRouteName: "Loading"
     }
   )
-  // createStackNavigator({
-  //   Profile: { screen: Main },
-  //   Interests: { screen: Interests }
-  // })
 );
 
 export default class App extends React.Component {

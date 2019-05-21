@@ -38,9 +38,12 @@ export default class BusinessPointsPage extends React.Component {
     }));
   };
 
-  //   handleBack = () => {
-  //     this.setState({ scanned: false });
-  //   };
+
+  handleBack = () => {
+    this.setState(() => ({
+      scanned: false
+    }));
+  };
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
@@ -70,11 +73,25 @@ export default class BusinessPointsPage extends React.Component {
           onPress={() => this.handleBack()}
         />
         <ScrollView style={styles.body}>
+
+        {scanned ? (
+          <Header
+            title="Points Page"
+            isLoggedIn={true}
+            back
+            onBack={this.handleBack}
+          />
+        ) : (
+          <Header title="Points Page" isLoggedIn={true} />
+        )}
+
+        <ScrollView contentContainerStyle={styles.body}>
+
           {scanned ? (
             <>
               <Text
                 style={{
-                  fontSize: "25",
+                  fontSize: 25,
                   marginBottom: "20%",
                   fontWeight: "bold",
                   textAlign: "center"
@@ -147,8 +164,8 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   body: {
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     height: "85%",
     padding: "10%",
     fontSize: 100

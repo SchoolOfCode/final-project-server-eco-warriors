@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "@99xt/first-born";
 import Footer from "./components/Footer";
-import Header from "../pages/components/Header";
+import Header from "./components/Header";
 import Card from "./components/Card";
 import Carousel from "react-native-carousel-control";
 import {
@@ -12,7 +12,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-export default class Interests extends React.Component {
+export default class Places extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -87,22 +87,8 @@ export default class Interests extends React.Component {
           }
         ])
       ],
-      currentCategory: [
-        (plastic = [
-          {
-            name: "The Clean Kilo",
-            address: "1 Gibb Street, Birmingham, B9 4BF"
-          },
-          {
-            name: "Nature's Intention",
-            address: "2 High Street, Bromsgrove, B61 8HQ"
-          },
-          {
-            name: "Indigo Wholefoods",
-            address: "50-52 St Mary's Row, Birmingham, B13 8JG"
-          }
-        ])
-      ]
+      currentCategory: null,
+      currentPage: 1
     };
   }
 
@@ -113,7 +99,7 @@ export default class Interests extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header title="Interests" />
+        <Header title="Places" />
         <View style={styles.carousel}>
           <Carousel
             pageStyle={{
@@ -124,6 +110,8 @@ export default class Interests extends React.Component {
             }}
             pageWidth={130}
             swipeThreshold={0.2}
+            currentPage={this.state.currentPage}
+            sneak={65}
           >
             <TouchableOpacity
               onPress={() => this.updateCurrentCategory(plastic)}
@@ -140,7 +128,8 @@ export default class Interests extends React.Component {
                     right: 0,
                     bottom: 0,
                     justifyContent: "center",
-                    alignItems: "flex-start"
+                    alignItems: "center",
+                    backgroundColor: "#90BC00"
                   }}
                   onPress={() => this.updateCurrentCategory(plastic)}
                 >
@@ -161,32 +150,11 @@ export default class Interests extends React.Component {
                     right: 0,
                     bottom: 0,
                     justifyContent: "center",
-                    alignItems: "flex-start"
+                    alignItems: "center",
+                    backgroundColor: "#90BC00"
                   }}
                 >
                   <Text style={{ color: "#FFFFFF" }}>Reduce Meat</Text>
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.updateCurrentCategory(cosmetics)}
-            >
-              <ImageBackground
-                style={{ height: 130, width: 130 }}
-                source={require("../assets/lush.png")}
-              >
-                <View
-                  style={{
-                    position: "absolute",
-                    top: 110,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    justifyContent: "center",
-                    alignItems: "flex-start"
-                  }}
-                >
-                  <Text style={{ color: "#FFFFFF" }}>Eco Cosmetics</Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -205,10 +173,11 @@ export default class Interests extends React.Component {
                     right: 0,
                     bottom: 0,
                     justifyContent: "center",
-                    alignItems: "flex-start"
+                    alignItems: "center",
+                    backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Energy Saving</Text>
+                  <Text style={{ color: "#FFFFFF" }}>Green Energy</Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -227,43 +196,65 @@ export default class Interests extends React.Component {
                     right: 0,
                     bottom: 0,
                     justifyContent: "center",
-                    alignItems: "flex-start"
+                    alignItems: "center",
+                    backgroundColor: "#90BC00"
                   }}
                 >
                   <Text style={{ color: "#FFFFFF" }}>Recycle Clothes</Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory(cosmetics)}
+            >
+              <ImageBackground
+                style={{ height: 130, width: 130 }}
+                source={require("../assets/lush.png")}
+              >
+                <View
+                  style={{
+                    position: "absolute",
+                    top: 110,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#90BC00"
+                  }}
+                >
+                  <Text style={{ color: "#FFFFFF" }}>Eco Cosmetics</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
           </Carousel>
-          {/* <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          />
-          <Image
-            style={{ height: 125, width: 125, marginLeft: 3, marginRight: 3 }}
-            source={require("../assets/530878d8-gp0stt3fm.jpg")}
-          /> */}
         </View>
         <ScrollView style={styles.mainContent}>
-          {this.state.currentCategory &&
-            this.state.currentCategory[0].map((item, idx) => (
-              <Card
-                title={item.name}
-                key={idx}
-                des={item.address}
-                onPress={() => this.props.navigation.navigate("BusinessInfo")}
-              />
-            ))}
+          <View style={{ padding: 5 }}>
+            {this.state.currentCategory ? (
+              this.state.currentCategory[0].map((item, idx) => (
+                <TouchableOpacity
+                  key={idx}
+                  onPress={() => this.props.navigation.navigate("BusinessInfo")}
+                >
+                  <Card title={item.name} key={idx} des={item.address} />
+                </TouchableOpacity>
+              ))
+            ) : (
+              <Text
+                style={{
+                  color: "#bababa",
+                  fontSize: 15,
+                  paddingTop: "35%",
+                  paddingLeft: "5%"
+                }}
+              >
+                Please select a category from above to view relevant businesses
+              </Text>
+            )}
+          </View>
         </ScrollView>
-        <Footer {...this.props} active="Interests" />
+        <Footer {...this.props} active="Places" />
       </View>
     );
   }
@@ -278,11 +269,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "-20%",
-    marginRight: "-20%"
+    marginLeft: "-25%",
+    marginRight: "-25%"
   },
   mainContent: {
-    height: "80%",
-    width: "100%"
+    height: "100%",
+    width: "100%",
+    paddingBottom: 10
   }
 });

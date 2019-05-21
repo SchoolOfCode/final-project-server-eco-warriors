@@ -21,20 +21,18 @@ export default class Footer extends Component {
               <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
             </TabItem>
           )}
-          {this.props.active === "Interests" ? (
+          {this.props.active === "Places" ? (
             <TabItem
               active
-              onPress={() => this.props.navigation.navigate("Interests")}
+              onPress={() => this.props.navigation.navigate("Places")}
             >
-              <Icon name="bookmark" />
-              <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
+              <Icon name="pin" />
+              <Text style={{ color: "black", fontSize: 10 }}>Places</Text>
             </TabItem>
           ) : (
-            <TabItem
-              onPress={() => this.props.navigation.navigate("Interests")}
-            >
-              <Icon name="bookmark" />
-              <Text style={{ color: "black", fontSize: 10 }}>Interests</Text>
+            <TabItem onPress={() => this.props.navigation.navigate("Places")}>
+              <Icon name="pin" />
+              <Text style={{ color: "black", fontSize: 10 }}>Places</Text>
             </TabItem>
           )}
           {this.props.active === "QR" ? (
@@ -66,8 +64,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     backgroundColor: "#FFFFFF",
-    height: "10%",
-    borderTopColor: "grey",
+    height: "9%",
+    borderTopColor: "lightgrey",
     borderTopWidth: 1
   }
 });
