@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import firebase from "firebase";
 
 export default class Header extends React.Component {
@@ -20,7 +20,16 @@ export default class Header extends React.Component {
     return (
       <View style={styles.header}>
         <View style={styles.header2}>
-          <Feather name="log-out" size={25} color="#669335" />
+          {this.props.back ? (
+            <Ionicons
+              name="md-arrow-back"
+              size={25}
+              color="white"
+              onPress={this.props.onPress}
+            />
+          ) : (
+            <Feather name="log-out" size={25} color="#669335" />
+          )}
           <Text style={{ color: "white", fontSize: 20 }}>
             {this.props.title}
           </Text>
@@ -29,7 +38,7 @@ export default class Header extends React.Component {
               name="exit-run"
               size={30}
               color="white"
-              onPress={this.handleSignOut}
+              onPress={() => this.handleSignOut()}
             />
           ) : (
             <Feather name="log-out" size={25} color="#669335" />

@@ -4,6 +4,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   View,
+  ScrollView,
   Picker
 } from "react-native";
 import { LinearGradient } from "expo";

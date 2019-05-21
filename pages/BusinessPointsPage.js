@@ -18,9 +18,9 @@ export default class BusinessPointsPage extends React.Component {
       usersName: ""
     };
   }
-
-  //put a back button
-  // have a handle back and set the state to false
+  handleBack = () => {
+    this.setState({ scanned: false });
+  };
 
   handleSubmit = () => {
     let newPoints =
@@ -28,11 +28,19 @@ export default class BusinessPointsPage extends React.Component {
     firebase
       .database()
       .ref("users/" + this.state.userID)
-      .update({ points: newPoints });
+      .update({ points: newPoints })
+      .then(() => {
+        console.log("alert points");
+        alert("Points have been added");
+      });
     this.setState(() => ({
       currentPoints: newPoints
     }));
   };
+
+  //   handleBack = () => {
+  //     this.setState({ scanned: false });
+  //   };
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
@@ -55,7 +63,12 @@ export default class BusinessPointsPage extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header title="Points Page" isLoggedIn={true} />
+        <Header
+          title="Points Page"
+          isLoggedIn={true}
+          back
+          onPress={() => this.handleBack()}
+        />
         <ScrollView style={styles.body}>
           {scanned ? (
             <>
@@ -69,13 +82,6 @@ export default class BusinessPointsPage extends React.Component {
               >
                 How much has {this.state.usersName} spent today?
               </Text>
-              {/* <Ionicons
-                name="md-arrow-back"
-                size={25}
-                color="black"
-                marginLeft={20}
-                onPress={() => this.props.navigation.navigate("")}
-              /> */}
               <TextInput
                 style={{
                   marginBottom: 40,
