@@ -33,14 +33,6 @@ export default class Header extends React.Component {
               onPress={this.props.onPress}
             />
           ) : (
-            <Feather name="log-out" size={25} color="#669335" />
-
-              size={28}
-              color="white"
-              marginLeft={20}
-              onPress={this.props.onBack}
-            />
-          ) : (
             <Feather
               name="log-out"
               size={1}

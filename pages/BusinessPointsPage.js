@@ -38,7 +38,6 @@ export default class BusinessPointsPage extends React.Component {
     }));
   };
 
-
   handleBack = () => {
     this.setState(() => ({
       scanned: false
@@ -66,14 +65,6 @@ export default class BusinessPointsPage extends React.Component {
     const { hasCameraPermission, scanned } = this.state;
     return (
       <View style={styles.container}>
-        <Header
-          title="Points Page"
-          isLoggedIn={true}
-          back
-          onPress={() => this.handleBack()}
-        />
-        <ScrollView style={styles.body}>
-
         {scanned ? (
           <Header
             title="Points Page"
@@ -86,7 +77,6 @@ export default class BusinessPointsPage extends React.Component {
         )}
 
         <ScrollView contentContainerStyle={styles.body}>
-
           {scanned ? (
             <>
               <Text
@@ -117,30 +107,9 @@ export default class BusinessPointsPage extends React.Component {
               />
               <Button
                 style={{ backgroundColor: "#398900" }}
-                // style={{
-                //   backgroundColor: "#398900",
-                //   width: "73%",
-                //   height: "20%",
-                //   borderRadius: 30,
-                //   marginTop: 80,
-                //   //   justifyContent: "center",
-                //   //   alignItems: "center",
-                //   marginLeft: "8%",
-                //   color: "#f74923"
-                // }}
                 onPress={() => this.handleSubmit()}
               >
-                <Text
-                //   style={{
-                //     color: "white",
-                //     textAlign: "center",
-                //     alignItems: "center",
-                //     // fontWeight: "bold",
-                //     marginRight: "16%"
-                //   }}
-                >
-                  Submit points
-                </Text>
+                <Text>Submit points</Text>
               </Button>
             </>
           ) : (
