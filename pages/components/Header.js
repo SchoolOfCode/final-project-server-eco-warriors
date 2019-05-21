@@ -28,6 +28,13 @@ export default class Header extends React.Component {
           {this.props.back ? (
             <Ionicons
               name="md-arrow-back"
+              size={25}
+              color="white"
+              onPress={this.props.onPress}
+            />
+          ) : (
+            <Feather name="log-out" size={25} color="#669335" />
+
               size={28}
               color="white"
               marginLeft={20}
@@ -49,7 +56,7 @@ export default class Header extends React.Component {
               name="exit-run"
               size={30}
               color="white"
-              onPress={this.handleSignOut}
+              onPress={() => this.handleSignOut()}
             />
           ) : (
             <Feather
