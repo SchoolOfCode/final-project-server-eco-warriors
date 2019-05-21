@@ -202,7 +202,10 @@ export default class SignUp extends React.Component {
             onPress={() => this.props.navigation.navigate("Login")}
           >
             <Text style={{ color: "white" }}>
-              Already have an account? Login
+              Already have an account?{" "}
+              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+                Login
+              </Text>
             </Text>
           </Button>
           <Button
@@ -211,7 +214,10 @@ export default class SignUp extends React.Component {
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
             <Text style={{ color: "white" }}>
-              Not a business? Register here
+              Not a business?{" "}
+              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+                Register Here
+              </Text>
             </Text>
           </Button>
         </ScrollView>
