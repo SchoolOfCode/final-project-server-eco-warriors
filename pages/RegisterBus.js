@@ -4,7 +4,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   View,
-  Picker
+  Picker,
+  ScrollView
 } from "react-native";
 import { LinearGradient } from "expo";
 import { Button, Text } from "@99xt/first-born";
@@ -57,13 +58,16 @@ export default class SignUp extends React.Component {
   };
   render() {
     return (
-      <LinearGradient colors={["#a2ea54", "#669335"]} style={{ flex: 1 }}>
+      <LinearGradient
+        colors={["#B7DD63", "#90BC00", "#398900"]}
+        style={{ flex: 1 }}
+      >
         <ScrollView
           style={styles.container}
           resetScrollToCoords={{ x: 0, y: 0 }}
           scrollEnabled={false}
           contentContainerStyle={styles.container}
-          style={{ backgroundColor: ["#a2ea54", "#669335"] }}
+          style={{ backgroundColor: ["#B7DD63", "#90BC00", "#398900"] }}
         >
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>

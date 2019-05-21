@@ -46,12 +46,11 @@ export default class Login extends React.Component {
         <View style={styles.container}>
           <Image
             style={{
-              width: 220,
-              height: 95,
-              marginBottom: 50,
-              marginRight: 75
+              width: 200,
+              height: 200,
+              marginBottom: 10
             }}
-            source={require("../assets/white-leaf-png-6.png")}
+            source={require("../assets/logoeco.png")}
           />
           <TextInput
             placeholder="Email"
