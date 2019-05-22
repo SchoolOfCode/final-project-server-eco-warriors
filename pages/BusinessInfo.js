@@ -15,22 +15,20 @@ import { Text, Button } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
   render() {
-    const openingTimes = [
-      { day: "Monday", open: "Closed" },
-      { day: "Tuesday", open: "10:00am -7:00pm" },
-      { day: "Wednesday", open: "10:00am -7:00pm" },
-      { day: "Thursday", open: "10:00am -7:00pm" },
-      { day: "Friday", open: "10:00am -7:00pm" },
-      { day: "Saturday", open: "9:00am -6:30pm" },
-      { day: "Sunday", open: "12:00pm -6:00pm" }
-    ];
+    const {
+      name,
+      description,
+      website,
+      address,
+      google,
+      openings,
+      mainImage
+    } = this.props.navigation.state.params;
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scroll}>
-          <ImageBackground
-            style={styles.image}
-            source={require("../assets/cleankilo.jpeg")}
-          >
+          <ImageBackground style={styles.image} source={{ uri: mainImage }}>
             <TouchableOpacity>
               <Ionicons
                 style={{ marginLeft: 15 }}
@@ -40,17 +38,17 @@ export default class BusinessInfo extends React.Component {
                 onPress={() => this.props.navigation.navigate("Places")}
               />
             </TouchableOpacity>
-            <Text style={styles.mainTitle}>The Clean Kilo</Text>
+            <Text style={styles.mainTitle}>{name}</Text>
           </ImageBackground>
           <View style={styles.description}>
             <Text style={styles.title}>Description</Text>
-            <Text>Zero waste plastic reduction shop</Text>
+            <Text>{description}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.description}>
             <Text style={styles.title}>Opening Times </Text>
             <View>
-              {openingTimes.map((selection, index) => (
+              {openings.map((item, index) => (
                 <View
                   key={index}
                   style={{
@@ -58,8 +56,8 @@ export default class BusinessInfo extends React.Component {
                     justifyContent: "space-between"
                   }}
                 >
-                  <Text>{selection.day}</Text>
-                  <Text style={{ marginRight: 10 }}>{selection.open}</Text>
+                  <Text>{item.day}</Text>
+                  <Text style={{ marginRight: 10 }}>{item.open}</Text>
                 </View>
               ))}
             </View>
@@ -68,7 +66,7 @@ export default class BusinessInfo extends React.Component {
           <View style={styles.description}>
             <Text style={styles.title}>Website</Text>
             <TouchableOpacity
-              onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
+              onPress={() => Linking.openURL(`http://${website}`)}
             >
               <Text
                 style={{
@@ -77,22 +75,16 @@ export default class BusinessInfo extends React.Component {
                   fontSize: 15
                 }}
               >
-                www.thecleankilo.co.uk
+                {website}
               </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.divider} />
           <View style={styles.description}>
             <Text style={styles.title}>Address</Text>
-            <Text>1 Gibb St, Birmingham, B9 4BF</Text>
+            <Text>{address}</Text>
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
-              )
-            }
-          >
+          <TouchableOpacity onPress={() => Linking.openURL(google)}>
             <Image
               style={styles.image2}
               source={require("../assets/cleankilomap.png")}
@@ -106,11 +98,7 @@ export default class BusinessInfo extends React.Component {
                 height: "17%",
                 borderRadius: 30
               }}
-              onPress={() =>
-                Linking.openURL(
-                  "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
-                )
-              }
+              onPress={() => Linking.openURL(google)}
             >
               <Text style={{ color: "white" }}>Directions</Text>
             </Button>
