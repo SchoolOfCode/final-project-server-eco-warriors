@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 import Card from "./components/Card";
+import Roller from "./components/Tcker";
 
 import { Text } from "@99xt/first-born";
 import PureChart from "react-native-pure-chart";
@@ -98,7 +99,7 @@ export default class Profile extends React.Component {
             </Text>
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
-              <Text
+              {/* <Text
                 style={{
                   color: "white",
                   zIndex: 1,
@@ -107,7 +108,8 @@ export default class Profile extends React.Component {
                 }}
               >
                 {this.state.points}
-              </Text>
+              </Text> */}
+              <Roller value={this.state.points} />
             </View>
             <Text
               style={{
