@@ -100,7 +100,7 @@ export default class BusinessPointsPage extends React.Component {
                 style={{
                   fontSize: 25,
                   marginBottom: "20%",
-                  fontWeight: "bold",
+                  fontFamily: "dosis-bold",
                   textAlign: "center"
                 }}
               >
@@ -116,7 +116,9 @@ export default class BusinessPointsPage extends React.Component {
                   textAlign: "center",
                   borderBottomColor: "#398900",
                   height: "11%",
-                  borderBottomWidth: 1
+                  borderBottomWidth: 1,
+                  fontFamily: "dosis-medium",
+                  textAlign: "center"
                 }}
                 placeholder="Please enter points here"
                 placeholderTextColor="green"
@@ -130,7 +132,9 @@ export default class BusinessPointsPage extends React.Component {
                 style={{ backgroundColor: "#398900" }}
                 onPress={() => this.handleSubmit()}
               >
-                <Text>Submit points</Text>
+                <Text style={{ fontFamily: "dosis-medium" }}>
+                  Submit points
+                </Text>
               </Button>
             </>
           ) : (

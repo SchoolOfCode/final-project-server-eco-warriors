@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     paddingLeft: "8%"
   },
   description: {
+    fontFamily: "dosis-bold",
     fontSize: 20,
     paddingTop: "6%"
   }

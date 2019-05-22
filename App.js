@@ -15,6 +15,7 @@ import RegisterBus from "./pages/RegisterBus";
 import BusinessPointsPage from "./pages/BusinessPointsPage";
 import BusinessInfo from "./pages/BusinessInfo";
 import QR from "./pages/QR";
+import { Font } from "expo";
 
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
@@ -38,6 +39,18 @@ const AppNavigator = createAppContainer(
 );
 
 export default class App extends React.Component {
+  componentDidMount() {
+    Font.loadAsync({
+      "dosis-regular": require("./assets/fonts/Dosis-Regular.ttf"),
+      "dosis-bold": require("./assets/fonts/Dosis-Bold.ttf"),
+      "dosis-extra-bold": require("./assets/fonts/Dosis-ExtraBold.ttf"),
+      "dosis-light": require("./assets/fonts/Dosis-Light.ttf"),
+      "dosis-extra-light": require("./assets/fonts/Dosis-ExtraLight.ttf"),
+      "dosis-medium": require("./assets/fonts/Dosis-Medium.ttf"),
+      "dosis-semi-bold": require("./assets/fonts/Dosis-SemiBold.ttf")
+    });
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
