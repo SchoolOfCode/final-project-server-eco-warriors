@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import {
   Button,
   Text,
-  SnackManager,
   NotificationBarManager,
   Notification
 } from "@99xt/first-born";
@@ -13,9 +12,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { Constants, Permissions, BarCodeScanner } from "expo";
 
 export default class BusinessPointsPage extends React.Component {
-  componentDidMount() {
-    NotificationBarManager.registerMessageBar(this.refs.alert);
-  }
   constructor(props) {
     super(props);
     this.state = {
@@ -28,9 +24,27 @@ export default class BusinessPointsPage extends React.Component {
     };
   }
 
-  //   componentDidMount() {
-  //     SnackManager.registerMessageBar(this.refs.alert);
-  //   }
+  componentDidMount() {
+    console.log("registerMessageBar");
+    console.log("this.refs.alert", this.refs.alert);
+    NotificationBarManager.registerMessageBar(this.refs.alert);
+  }
+  componentWillUnmount() {
+    console.log("unregisterMessageBar");
+    NotificationBarManager.unregisterMessageBar();
+  }
+  handleShowNotification = () => {
+    console.log("handleShowNotification");
+    NotificationBarManager.showAlert({
+      message: "Your points have been added",
+      color: "#398900"
+      // required
+    });
+    this.setState({
+      points: ""
+    });
+  };
+
   handleBack = () => {
     this.setState({ scanned: false });
   };
@@ -44,11 +58,7 @@ export default class BusinessPointsPage extends React.Component {
       .update({ points: newPoints })
       .then(() => {
         console.log("here are the points");
-        console.log(NotificationBarManager);
-        NotificationBarManager.showAlert({
-          message: "Your points have been added"
-          // required
-        });
+        this.handleShowNotification();
       });
   };
 
@@ -75,9 +85,6 @@ export default class BusinessPointsPage extends React.Component {
         }
       });
   };
-  componentWillUnmount() {
-    SnackManager.unregisterMessageBar();
-  }
   render() {
     const { hasCameraPermission, scanned } = this.state;
     return (
@@ -94,6 +101,7 @@ export default class BusinessPointsPage extends React.Component {
         )}
 
         <ScrollView contentContainerStyle={styles.body}>
+          <Notification ref={"alert"} />
           {scanned ? (
             <>
               <Text
@@ -110,9 +118,6 @@ export default class BusinessPointsPage extends React.Component {
                 style={{
                   marginBottom: 40,
                   borderRadius: 4,
-                  //   borderWidth: 0.5,
-                  //   borderBottomColor: "#FFFFFF",
-                  //   borderColor: "#d6d7da",
                   textAlign: "center",
                   borderBottomColor: "#398900",
                   height: "11%",
@@ -127,7 +132,6 @@ export default class BusinessPointsPage extends React.Component {
                 onChangeText={points => this.setState({ points })}
                 value={String(this.state.points)}
               />
-              <Notification ref={"alert"} />
               <Button
                 style={{ backgroundColor: "#398900" }}
                 onPress={() => this.handleSubmit()}
@@ -138,11 +142,23 @@ export default class BusinessPointsPage extends React.Component {
               </Button>
             </>
           ) : (
-            <BarCodeScanner
-              onBarCodeScanned={scanned ? undefined : this.handleScan}
-              barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-              style={{ height: 300, width: 300 }}
-            />
+            <>
+              <Text
+                style={{
+                  marginBottom: "20%",
+                  fontSize: 25,
+                  fontFamily: "dosis-bold",
+                  textAlign: "center"
+                }}
+              >
+                Please scan QR code
+              </Text>
+              <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : this.handleScan}
+                barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+                style={{ height: 300, width: 300 }}
+              />
+            </>
           )}
         </ScrollView>
       </View>
@@ -158,8 +174,6 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   body: {
-    // justifyContent: "center",
-    // alignItems: "center",
     height: "85%",
     padding: "10%",
     fontSize: 100
