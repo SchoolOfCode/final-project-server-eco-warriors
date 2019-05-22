@@ -72,7 +72,14 @@ export default class SignUp extends React.Component {
           {this.state.errorMessage && (
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
-          <Text color="white" style={{ fontSize: 20, marginBottom: "2%" }}>
+          <Text
+            color="white"
+            style={{
+              fontSize: 20,
+              marginBottom: "2%",
+              fontFamily: "dosis-medium"
+            }}
+          >
             Business Registration
           </Text>
           <TextInput
@@ -82,7 +89,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={businessName => this.setState({ businessName })}
             value={this.state.businessName}
@@ -95,7 +103,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
@@ -109,7 +118,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={password => this.setState({ password })}
@@ -122,7 +132,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={street => this.setState({ street })}
@@ -135,7 +146,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={postcode => this.setState({ postcode })}
             value={this.state.postcode}
@@ -148,7 +160,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={businessDescription =>
               this.setState({ businessDescription })
@@ -158,7 +171,12 @@ export default class SignUp extends React.Component {
           />
           <Picker
             selectedValue={this.state.category}
-            style={{ height: 45, width: 280, color: "white" }}
+            style={{
+              height: 45,
+              width: 280,
+              color: "white",
+              fontFamily: "dosis-medium"
+            }}
             onValueChange={(itemValue, itemIndex) => {
               console.log(itemIndex, itemValue);
               this.setState({ category: itemValue });
@@ -195,15 +213,23 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black" }}>Register</Text>
+            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+              Register
+            </Text>
           </Button>
           <Button
             transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               Already have an account?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Login
               </Text>
             </Text>
@@ -213,9 +239,15 @@ export default class SignUp extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               Not a business?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Register Here
               </Text>
             </Text>

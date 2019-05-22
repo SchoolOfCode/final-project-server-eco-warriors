@@ -89,7 +89,12 @@ export default class SignUp extends React.Component {
           )}
           <Text
             color="white"
-            style={{ fontSize: 20, marginBottom: "7%", marginTop: -30 }}
+            style={{
+              fontSize: 20,
+              marginBottom: "7%",
+              marginTop: -30,
+              fontFamily: "dosis-medium"
+            }}
           >
             Personal Registration
           </Text>
@@ -100,7 +105,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={name => this.setState({ name })}
             value={this.state.name}
@@ -113,7 +119,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             onChangeText={surname => this.setState({ surname })}
             value={this.state.surname}
@@ -126,7 +133,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
@@ -140,7 +148,8 @@ export default class SignUp extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={password => this.setState({ password })}
@@ -154,7 +163,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              marginBottom: "8%"
+              marginBottom: "8%",
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={location => this.setState({ location })}
@@ -169,15 +179,23 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black" }}>Register</Text>
+            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+              Register
+            </Text>
           </Button>
           <Button
             transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               Already have an account?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Login
               </Text>
             </Text>
@@ -187,9 +205,15 @@ export default class SignUp extends React.Component {
             style={{ marginTop: -15 }}
             onPress={() => this.props.navigation.navigate("RegisterBus")}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               Business Owner?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Register Here
               </Text>
             </Text>
