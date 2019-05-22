@@ -13,12 +13,28 @@ export default class Footer extends Component {
               onPress={() => this.props.navigation.navigate("Profile")}
             >
               <Icon name="person" />
-              <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
+                Profile
+              </Text>
             </TabItem>
           ) : (
             <TabItem onPress={() => this.props.navigation.navigate("Profile")}>
               <Icon name="person" />
-              <Text style={{ color: "black", fontSize: 10 }}>Profile</Text>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
+                Profile
+              </Text>
             </TabItem>
           )}
           {this.props.active === "Places" ? (
@@ -27,12 +43,28 @@ export default class Footer extends Component {
               onPress={() => this.props.navigation.navigate("Places")}
             >
               <Icon name="pin" />
-              <Text style={{ color: "black", fontSize: 10 }}>Places</Text>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
+                Places
+              </Text>
             </TabItem>
           ) : (
             <TabItem onPress={() => this.props.navigation.navigate("Places")}>
               <Icon name="pin" />
-              <Text style={{ color: "black", fontSize: 10 }}>Places</Text>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
+                Places
+              </Text>
             </TabItem>
           )}
           {this.props.active === "QR" ? (
@@ -41,14 +73,26 @@ export default class Footer extends Component {
               onPress={() => this.props.navigation.navigate("QR")}
             >
               <Icon name="barcode" />
-              <Text style={{ color: "black", fontSize: 10 }}>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Collect Points
               </Text>
             </TabItem>
           ) : (
             <TabItem onPress={() => this.props.navigation.navigate("QR")}>
               <Icon name="barcode" />
-              <Text style={{ color: "black", fontSize: 10 }}>
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 12,
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Collect Points
               </Text>
             </TabItem>

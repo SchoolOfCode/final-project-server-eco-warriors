@@ -60,7 +60,8 @@ export default class Login extends React.Component {
               width: "73%",
               height: "7%",
               borderBottomColor: "#FFFFFF",
-              borderBottomWidth: 1
+              borderBottomWidth: 1,
+              fontFamily: "dosis-medium"
             }}
             autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
@@ -77,7 +78,8 @@ export default class Login extends React.Component {
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
               marginBottom: "10%",
-              paddingTop: 20
+              paddingTop: 20,
+              fontFamily: "dosis-medium"
             }}
             placeholder="Password"
             onChangeText={password => this.setState({ password })}
@@ -93,16 +95,24 @@ export default class Login extends React.Component {
               borderRadius: 30
             }}
           >
-            <Text style={{ color: "black" }}>Log In</Text>
+            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+              Log In
+            </Text>
           </Button>
           <Button
             style={{ marginTop: 40 }}
             transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               New User?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Register Here
               </Text>
             </Text>
@@ -112,9 +122,15 @@ export default class Login extends React.Component {
             transparent
             style={{ marginTop: -15 }}
           >
-            <Text style={{ color: "white" }}>
+            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
               Business Owner?{" "}
-              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  color: "white",
+                  fontFamily: "dosis-medium"
+                }}
+              >
                 Register Here
               </Text>
             </Text>

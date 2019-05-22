@@ -44,7 +44,9 @@ export default class BusinessInfo extends React.Component {
           </ImageBackground>
           <View style={styles.description}>
             <Text style={styles.title}>Description</Text>
-            <Text>Zero waste plastic reduction shop</Text>
+            <Text style={{ fontFamily: "dosis-medium" }}>
+              Zero waste plastic reduction shop
+            </Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.description}>
@@ -58,8 +60,12 @@ export default class BusinessInfo extends React.Component {
                     justifyContent: "space-between"
                   }}
                 >
-                  <Text>{selection.day}</Text>
-                  <Text style={{ marginRight: 10 }}>{selection.open}</Text>
+                  <Text style={{ fontFamily: "dosis-medium" }}>
+                    {selection.day}
+                  </Text>
+                  <Text style={{ marginRight: 10, fontFamily: "dosis-medium" }}>
+                    {selection.open}
+                  </Text>
                 </View>
               ))}
             </View>
@@ -74,7 +80,8 @@ export default class BusinessInfo extends React.Component {
                 style={{
                   textDecorationLine: "underline",
                   textDecorationColor: "red",
-                  fontSize: 15
+                  fontSize: 15,
+                  fontFamily: "dosis-medium"
                 }}
               >
                 www.thecleankilo.co.uk
@@ -84,7 +91,9 @@ export default class BusinessInfo extends React.Component {
           <View style={styles.divider} />
           <View style={styles.description}>
             <Text style={styles.title}>Address</Text>
-            <Text>1 Gibb St, Birmingham, B9 4BF</Text>
+            <Text style={{ fontFamily: "dosis-medium" }}>
+              1 Gibb St, Birmingham, B9 4BF
+            </Text>
           </View>
           <TouchableOpacity
             onPress={() =>
@@ -112,7 +121,9 @@ export default class BusinessInfo extends React.Component {
                 )
               }
             >
-              <Text style={{ color: "white" }}>Directions</Text>
+              <Text style={{ color: "white", fontFamily: "dosis-bold" }}>
+                Directions
+              </Text>
             </Button>
           </View>
         </ScrollView>
@@ -129,9 +140,9 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   mainTitle: {
-    fontSize: 30,
+    fontFamily: "dosis-bold",
+    fontSize: 35,
     marginLeft: 15,
-    fontWeight: "bold",
     color: "#FFFFFF"
   },
   line: {
@@ -157,7 +168,8 @@ const styles = StyleSheet.create({
   description: {
     flexDirection: "column",
     justifyContent: "flex-start",
-    marginLeft: 10
+    marginLeft: 10,
+    fontFamily: "dosis-bold"
   },
   openingTimes: {},
   scroll: {
@@ -171,7 +183,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "dosis-bold",
     marginBottom: 7
     // padding: 5
   },

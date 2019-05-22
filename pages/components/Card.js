@@ -15,10 +15,10 @@ export default class Card extends Component {
           />
         </View>
         <View style={{ marginRight: 45 }}>
-          <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+          <Text style={{ fontSize: 22, fontFamily: "dosis-bold" }}>
             {this.props.title}
           </Text>
-          <Text style={{ color: "#bababa", fontSize: 13 }}>
+          <Text style={{ fontSize: 18, fontFamily: "dosis-light" }}>
             {this.props.des}
           </Text>
         </View>
