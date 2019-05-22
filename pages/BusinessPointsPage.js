@@ -2,11 +2,20 @@ import React from "react";
 import firebase from "firebase";
 import { StyleSheet, View, TextInput, ScrollView } from "react-native";
 import Header from "./components/Header";
-import { Button, Text } from "@99xt/first-born";
+import {
+  Button,
+  Text,
+  SnackManager,
+  NotificationBarManager,
+  Notification
+} from "@99xt/first-born";
 import { Ionicons } from "@expo/vector-icons";
 import { Constants, Permissions, BarCodeScanner } from "expo";
 
 export default class BusinessPointsPage extends React.Component {
+  componentDidMount() {
+    NotificationBarManager.registerMessageBar(this.refs.alert);
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +27,10 @@ export default class BusinessPointsPage extends React.Component {
       usersName: ""
     };
   }
+
+  //   componentDidMount() {
+  //     SnackManager.registerMessageBar(this.refs.alert);
+  //   }
   handleBack = () => {
     this.setState({ scanned: false });
   };
@@ -30,12 +43,13 @@ export default class BusinessPointsPage extends React.Component {
       .ref("users/" + this.state.userID)
       .update({ points: newPoints })
       .then(() => {
-        console.log("alert points");
-        alert("Points have been added");
+        console.log("here are the points");
+        console.log(NotificationBarManager);
+        NotificationBarManager.showAlert({
+          message: "Your points have been added"
+          // required
+        });
       });
-    this.setState(() => ({
-      currentPoints: newPoints
-    }));
   };
 
   handleBack = () => {
@@ -46,6 +60,7 @@ export default class BusinessPointsPage extends React.Component {
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
+    // console.log(firebase.auth().currentUser);
     firebase
       .database()
       .ref("users/" + data)
@@ -60,7 +75,9 @@ export default class BusinessPointsPage extends React.Component {
         }
       });
   };
-
+  componentWillUnmount() {
+    SnackManager.unregisterMessageBar();
+  }
   render() {
     const { hasCameraPermission, scanned } = this.state;
     return (
@@ -96,7 +113,10 @@ export default class BusinessPointsPage extends React.Component {
                   //   borderWidth: 0.5,
                   //   borderBottomColor: "#FFFFFF",
                   //   borderColor: "#d6d7da",
-                  textAlign: "center"
+                  textAlign: "center",
+                  borderBottomColor: "#398900",
+                  height: "11%",
+                  borderBottomWidth: 1
                 }}
                 placeholder="Please enter points here"
                 placeholderTextColor="green"
@@ -105,6 +125,7 @@ export default class BusinessPointsPage extends React.Component {
                 onChangeText={points => this.setState({ points })}
                 value={String(this.state.points)}
               />
+              <Notification ref={"alert"} />
               <Button
                 style={{ backgroundColor: "#398900" }}
                 onPress={() => this.handleSubmit()}

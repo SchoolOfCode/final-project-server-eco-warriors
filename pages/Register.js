@@ -38,9 +38,7 @@ export default class SignUp extends React.Component {
       .then(currentUser => {
         console.log(currentUser.user.uid);
         console.log(this.state.userType);
-
         //here we would create the QR code with the USER uid?
-
         firebase
           .database()
           .ref("users/" + currentUser.user.uid)
@@ -51,6 +49,16 @@ export default class SignUp extends React.Component {
             location: this.state.location,
             points: 0
             //insert QR code
+          })
+          .then(() => {
+            currentUser.user
+              .sendEmailVerification()
+              .then(() => {
+                console.log("email stuff");
+              })
+              .catch(error => {
+                console.log(error);
+              });
           })
           .then(() => {
             console.log("inserted");

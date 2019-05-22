@@ -50,6 +50,16 @@ export default class SignUp extends React.Component {
             //insert QR code
           })
           .then(() => {
+            currentUser.user.uid
+              .sendEmailVerification()
+              .then(() => {
+                console.log("this business has been registered ");
+              })
+              .catch(error => {
+                console.log(error);
+              });
+          })
+          .then(() => {
             console.log("inserted business");
             this.props.navigation.navigate("BusinessPointsPage");
           })
