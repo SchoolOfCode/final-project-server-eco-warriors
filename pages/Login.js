@@ -100,7 +100,12 @@ export default class Login extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
-            <Text style={{ color: "white" }}>New User? Register Here</Text>
+            <Text style={{ color: "white" }}>
+              New User?{" "}
+              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+                Register Here
+              </Text>
+            </Text>
           </Button>
           <Button
             onPress={() => this.props.navigation.navigate("RegisterBus")}
@@ -108,7 +113,10 @@ export default class Login extends React.Component {
             style={{ marginTop: -15 }}
           >
             <Text style={{ color: "white" }}>
-              Business Owner? Register Here
+              Business Owner?{" "}
+              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+                Register Here
+              </Text>
             </Text>
           </Button>
         </View>
