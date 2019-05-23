@@ -50,6 +50,7 @@ export default class Profile extends React.Component {
   };
 
   render() {
+    let newPoints = this.state.points * 10;
     let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
@@ -109,7 +110,7 @@ export default class Profile extends React.Component {
               >
                 {this.state.points}
               </Text> */}
-              <Roller value={this.state.points} />
+              <Roller value={newPoints} />
             </View>
             <Text
               style={{
