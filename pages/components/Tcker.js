@@ -29,15 +29,12 @@ export default class Roller extends React.Component {
   }
 
   rollNumber = () => {
-    // this.setState({
-    //   value: "0".repeat(this.props.value.length)
-    // });
-    setTimeout(() => {
+    setInterval(() => {
       this.setState({
         // currency: currencies[getRandom(0, 2)],
         value: this.props.value + ""
       });
-    }, 500);
+    }, 1000);
   };
 
   render() {
