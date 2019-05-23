@@ -51,7 +51,7 @@ export default class Profile extends React.Component {
   render() {
     let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
-
+    let newPoints = this.state.points * 10;
     let meat = (this.state.meatPoints * 1.9).toFixed(0);
     let miles = (meat * 2.32).toFixed(0);
     const { currentUser } = this.state;
@@ -99,7 +99,7 @@ export default class Profile extends React.Component {
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
               <Text style={{ color: "white", zIndex: 1, fontSize: 65 }}>
-                {this.state.points}
+                {newPoints}
               </Text>
             </View>
             <Text style={{ fontSize: 18, fontWeight: "bold", padding: 5 }}>
