@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 import Card from "./components/Card";
+import Roller from "./components/Tcker";
 
 import { Text } from "@99xt/first-born";
 import PureChart from "react-native-pure-chart";
@@ -49,6 +50,7 @@ export default class Profile extends React.Component {
   };
 
   render() {
+    let newPoints = this.state.points * 10;
     let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
@@ -89,8 +91,8 @@ export default class Profile extends React.Component {
           <View style={styles.body}>
             <Text
               style={{
-                fontSize: 33,
-                fontWeight: "bold",
+                fontSize: 28,
+                fontFamily: "dosis-semi-bold",
                 padding: 10
               }}
             >
@@ -98,11 +100,25 @@ export default class Profile extends React.Component {
             </Text>
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
-              <Text style={{ color: "white", zIndex: 1, fontSize: 65 }}>
+              {/* <Text
+                style={{
+                  color: "white",
+                  zIndex: 1,
+                  fontSize: 65,
+                  fontFamily: "dosis-bold"
+                }}
+              >
                 {this.state.points}
-              </Text>
+              </Text> */}
+              <Roller value={newPoints} />
             </View>
-            <Text style={{ fontSize: 18, fontWeight: "bold", padding: 5 }}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontFamily: "dosis-semi-bold",
+                padding: 5
+              }}
+            >
               So far you have prevented:
             </Text>
           </View>

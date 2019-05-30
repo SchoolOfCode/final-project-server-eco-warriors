@@ -87,7 +87,11 @@ export default class Places extends React.Component {
                     backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Reduce Plastic</Text>
+                  <Text
+                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                  >
+                    Reduce Plastic
+                  </Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -110,7 +114,11 @@ export default class Places extends React.Component {
                     backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Reduce Meat</Text>
+                  <Text
+                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                  >
+                    Reduce Meat
+                  </Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -133,7 +141,11 @@ export default class Places extends React.Component {
                     backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Green Energy</Text>
+                  <Text
+                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                  >
+                    Green Energy
+                  </Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -156,7 +168,11 @@ export default class Places extends React.Component {
                     backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Recycle Clothes</Text>
+                  <Text
+                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                  >
+                    Recycle Clothes
+                  </Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -179,7 +195,11 @@ export default class Places extends React.Component {
                     backgroundColor: "#90BC00"
                   }}
                 >
-                  <Text style={{ color: "#FFFFFF" }}>Eco Cosmetics</Text>
+                  <Text
+                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                  >
+                    Eco Cosmetics
+                  </Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -215,6 +235,7 @@ export default class Places extends React.Component {
                 style={{
                   color: "#bababa",
                   fontSize: 15,
+                  fontFamily: "dosis-medium",
                   paddingTop: "35%",
                   paddingLeft: "5%"
                 }}

@@ -30,7 +30,7 @@ export default class Header extends React.Component {
               name="md-arrow-back"
               size={25}
               color="white"
-              onPress={this.props.onPress}
+              onPress={this.props.onBack}
             />
           ) : (
             <Feather
@@ -40,7 +40,13 @@ export default class Header extends React.Component {
               style={{ marginRight: 28 }}
             />
           )}
-          <Text style={{ color: "white", fontSize: 20 }}>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 30,
+              fontFamily: "dosis-bold"
+            }}
+          >
             {this.props.title}
           </Text>
           {this.props.isLoggedIn ? (

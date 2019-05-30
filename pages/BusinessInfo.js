@@ -51,13 +51,13 @@ export default class BusinessInfo extends React.Component {
               {openings.map((item, index) => (
                 <View
                   key={index}
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between"
-                  }}
-                >
-                  <Text>{item.day}</Text>
-                  <Text style={{ marginRight: 10 }}>{item.open}</Text>
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between"
+                    }}
+                  >
+                  <Text style={{ fontFamily: "dosis-medium" }}>{item.day}</Text>
+                  <Text style={{ marginRight: 10, fontFamily: "dosis-medium" }}>{item.open}</Text>
                 </View>
               ))}
             </View>
@@ -72,7 +72,8 @@ export default class BusinessInfo extends React.Component {
                 style={{
                   textDecorationLine: "underline",
                   textDecorationColor: "red",
-                  fontSize: 15
+                  fontSize: 15,
+fontFamily: "dosis-medium"
                 }}
               >
                 {website}
@@ -99,27 +100,72 @@ export default class BusinessInfo extends React.Component {
                 borderRadius: 30
               }}
               onPress={() => Linking.openURL(google)}
+                  www.thecleankilo.co.uk
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.description}>
+              <Text style={styles.title}>Address</Text>
+              <Text style={{ fontFamily: "dosis-medium" }}>
+                1 Gibb St, Birmingham, B9 4BF
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
+                )
+              }
             >
-              <Text style={{ color: "white" }}>Directions</Text>
-            </Button>
-          </View>
-        </ScrollView>
-        <Footer {...this.props} />
-      </View>
+              <Image
+                style={styles.image2}
+                source={require("../assets/cleankilomap.png")}
+              />
+            </TouchableOpacity>
+            <View style={{ alignItems: "center", padding: 10 }}>
+              <Button
+                style={{
+                  backgroundColor: "green",
+                  width: "65%",
+                  height: "17%",
+                  borderRadius: 30
+                }}
+                onPress={() =>
+                  Linking.openURL(
+                    "https://www.google.com/maps/place/The+Clean+Kilo/@52.4748512,-1.8861705,17z/data=!3m1!4b1!4m5!3m4!1s0x4870bd0406f6dded:0xaa4ccc7c4af82c40!8m2!3d52.4748512!4d-1.8839818"
+                  )
+                }
+              >
+                <Text style={{ color: "white", fontFamily: "dosis-bold" }}>
+                  Directions
+                </Text>
+              </Button>
+            </View>
+          </ScrollView>
+          <Footer {...this.props} />
+        </View>
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  greenStrip: {
+    height: 30,
+    width: "100%",
+    backgroundColor: "#B7DD63"
+  },
   container: {
     alignItems: "center",
     justifyContent: "center",
-    height: "100%"
+    height: "100%",
+    paddingBottom: 30
   },
   mainTitle: {
-    fontSize: 30,
+    fontFamily: "dosis-bold",
+    fontSize: 35,
     marginLeft: 15,
-    fontWeight: "bold",
     color: "#FFFFFF"
   },
   line: {
@@ -145,7 +191,8 @@ const styles = StyleSheet.create({
   description: {
     flexDirection: "column",
     justifyContent: "flex-start",
-    marginLeft: 10
+    marginLeft: 10,
+    fontFamily: "dosis-bold"
   },
   openingTimes: {},
   scroll: {
@@ -159,7 +206,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: "dosis-bold",
     marginBottom: 7
     // padding: 5
   },

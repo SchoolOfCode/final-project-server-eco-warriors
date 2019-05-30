@@ -2,7 +2,12 @@ import React from "react";
 import firebase from "firebase";
 import { StyleSheet, View, TextInput, ScrollView } from "react-native";
 import Header from "./components/Header";
-import { Button, Text } from "@99xt/first-born";
+import {
+  Button,
+  Text,
+  NotificationBarManager,
+  Notification
+} from "@99xt/first-born";
 import { Ionicons } from "@expo/vector-icons";
 import { Constants, Permissions, BarCodeScanner } from "expo";
 
@@ -18,6 +23,28 @@ export default class BusinessPointsPage extends React.Component {
       usersName: ""
     };
   }
+
+  componentDidMount() {
+    console.log("registerMessageBar");
+    console.log("this.refs.alert", this.refs.alert);
+    NotificationBarManager.registerMessageBar(this.refs.alert);
+  }
+  componentWillUnmount() {
+    console.log("unregisterMessageBar");
+    NotificationBarManager.unregisterMessageBar();
+  }
+  handleShowNotification = () => {
+    console.log("handleShowNotification");
+    NotificationBarManager.showAlert({
+      message: "Your points have been added",
+      color: "#398900"
+      // required
+    });
+    this.setState({
+      points: ""
+    });
+  };
+
   handleBack = () => {
     this.setState({ scanned: false });
   };
@@ -30,12 +57,9 @@ export default class BusinessPointsPage extends React.Component {
       .ref("users/" + this.state.userID)
       .update({ points: newPoints })
       .then(() => {
-        console.log("alert points");
-        alert("Points have been added");
+        console.log("here are the points");
+        this.handleShowNotification();
       });
-    this.setState(() => ({
-      currentPoints: newPoints
-    }));
   };
 
   handleBack = () => {
@@ -46,6 +70,7 @@ export default class BusinessPointsPage extends React.Component {
 
   handleScan = ({ data }) => {
     console.log("I have scanned");
+    // console.log(firebase.auth().currentUser);
     firebase
       .database()
       .ref("users/" + data)
@@ -60,7 +85,6 @@ export default class BusinessPointsPage extends React.Component {
         }
       });
   };
-
   render() {
     const { hasCameraPermission, scanned } = this.state;
     return (
@@ -77,13 +101,14 @@ export default class BusinessPointsPage extends React.Component {
         )}
 
         <ScrollView contentContainerStyle={styles.body}>
+          <Notification ref={"alert"} />
           {scanned ? (
             <>
               <Text
                 style={{
                   fontSize: 25,
                   marginBottom: "20%",
-                  fontWeight: "bold",
+                  fontFamily: "dosis-bold",
                   textAlign: "center"
                 }}
               >
@@ -93,9 +118,11 @@ export default class BusinessPointsPage extends React.Component {
                 style={{
                   marginBottom: 40,
                   borderRadius: 4,
-                  //   borderWidth: 0.5,
-                  //   borderBottomColor: "#FFFFFF",
-                  //   borderColor: "#d6d7da",
+                  textAlign: "center",
+                  borderBottomColor: "#398900",
+                  height: "11%",
+                  borderBottomWidth: 1,
+                  fontFamily: "dosis-medium",
                   textAlign: "center"
                 }}
                 placeholder="Please enter points here"
@@ -109,15 +136,29 @@ export default class BusinessPointsPage extends React.Component {
                 style={{ backgroundColor: "#398900" }}
                 onPress={() => this.handleSubmit()}
               >
-                <Text>Submit points</Text>
+                <Text style={{ fontFamily: "dosis-medium" }}>
+                  Submit points
+                </Text>
               </Button>
             </>
           ) : (
-            <BarCodeScanner
-              onBarCodeScanned={scanned ? undefined : this.handleScan}
-              barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-              style={{ height: 300, width: 300 }}
-            />
+            <>
+              <Text
+                style={{
+                  marginBottom: "20%",
+                  fontSize: 25,
+                  fontFamily: "dosis-bold",
+                  textAlign: "center"
+                }}
+              >
+                Please scan QR code
+              </Text>
+              <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : this.handleScan}
+                barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+                style={{ height: 300, width: 300 }}
+              />
+            </>
           )}
         </ScrollView>
       </View>
@@ -133,8 +174,6 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   body: {
-    // justifyContent: "center",
-    // alignItems: "center",
     height: "85%",
     padding: "10%",
     fontSize: 100
