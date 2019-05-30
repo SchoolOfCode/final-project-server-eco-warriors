@@ -15,79 +15,91 @@ import { Text, Button } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
   render() {
-    const openingTimes = [
-      { day: "Monday", open: "Closed" },
-      { day: "Tuesday", open: "10:00am -7:00pm" },
-      { day: "Wednesday", open: "10:00am -7:00pm" },
-      { day: "Thursday", open: "10:00am -7:00pm" },
-      { day: "Friday", open: "10:00am -7:00pm" },
-      { day: "Saturday", open: "9:00am -6:30pm" },
-      { day: "Sunday", open: "12:00pm -6:00pm" }
-    ];
+    const {
+      name,
+      description,
+      website,
+      address,
+      google,
+      openings,
+      mainImage
+    } = this.props.navigation.state.params;
+
     return (
-      <>
-        <View style={styles.greenStrip} />
-        <View style={styles.container}>
-          <ScrollView style={styles.scroll}>
-            <ImageBackground
-              style={styles.image}
-              source={require("../assets/cleankilo.jpeg")}
-            >
-              <TouchableOpacity>
-                <Ionicons
-                  style={{ marginLeft: 15 }}
-                  name="md-arrow-back"
-                  size={30}
-                  color="white"
-                  onPress={() => this.props.navigation.navigate("Places")}
-                />
-              </TouchableOpacity>
-              <Text style={styles.mainTitle}>The Clean Kilo</Text>
-            </ImageBackground>
-            <View style={styles.description}>
-              <Text style={styles.title}>Description</Text>
-              <Text style={{ fontFamily: "dosis-medium" }}>
-                Zero waste plastic reduction shop
-              </Text>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.description}>
-              <Text style={styles.title}>Opening Times </Text>
-              <View>
-                {openingTimes.map((selection, index) => (
-                  <View
-                    key={index}
+      <View style={styles.container}>
+        <ScrollView style={styles.scroll}>
+          <ImageBackground style={styles.image} source={{ uri: mainImage }}>
+            <TouchableOpacity>
+              <Ionicons
+                style={{ marginLeft: 15 }}
+                name="md-arrow-back"
+                size={30}
+                color="white"
+                onPress={() => this.props.navigation.navigate("Places")}
+              />
+            </TouchableOpacity>
+            <Text style={styles.mainTitle}>{name}</Text>
+          </ImageBackground>
+          <View style={styles.description}>
+            <Text style={styles.title}>Description</Text>
+            <Text>{description}</Text>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.description}>
+            <Text style={styles.title}>Opening Times </Text>
+            <View>
+              {openings.map((item, index) => (
+                <View
+                  key={index}
                     style={{
                       flexDirection: "row",
                       justifyContent: "space-between"
                     }}
                   >
-                    <Text style={{ fontFamily: "dosis-medium" }}>
-                      {selection.day}
-                    </Text>
-                    <Text
-                      style={{ marginRight: 10, fontFamily: "dosis-medium" }}
-                    >
-                      {selection.open}
-                    </Text>
-                  </View>
-                ))}
-              </View>
+                  <Text style={{ fontFamily: "dosis-medium" }}>{item.day}</Text>
+                  <Text style={{ marginRight: 10, fontFamily: "dosis-medium" }}>{item.open}</Text>
+                </View>
+              ))}
             </View>
-            <View style={styles.divider} />
-            <View style={styles.description}>
-              <Text style={styles.title}>Website</Text>
-              <TouchableOpacity
-                onPress={() => Linking.openURL("https://thecleankilo.co.uk/")}
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.description}>
+            <Text style={styles.title}>Website</Text>
+            <TouchableOpacity
+              onPress={() => Linking.openURL(`http://${website}`)}
+            >
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  textDecorationColor: "red",
+                  fontSize: 15,
+fontFamily: "dosis-medium"
+                }}
               >
-                <Text
-                  style={{
-                    textDecorationLine: "underline",
-                    textDecorationColor: "red",
-                    fontSize: 15,
-                    fontFamily: "dosis-medium"
-                  }}
-                >
+                {website}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.description}>
+            <Text style={styles.title}>Address</Text>
+            <Text>{address}</Text>
+          </View>
+          <TouchableOpacity onPress={() => Linking.openURL(google)}>
+            <Image
+              style={styles.image2}
+              source={require("../assets/cleankilomap.png")}
+            />
+          </TouchableOpacity>
+          <View style={{ alignItems: "center", padding: 10 }}>
+            <Button
+              style={{
+                backgroundColor: "green",
+                width: "65%",
+                height: "17%",
+                borderRadius: 30
+              }}
+              onPress={() => Linking.openURL(google)}
                   www.thecleankilo.co.uk
                 </Text>
               </TouchableOpacity>

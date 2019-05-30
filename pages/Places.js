@@ -11,89 +11,44 @@ import {
   ImageBackground,
   TouchableOpacity
 } from "react-native";
+import firebase from "firebase";
 
 export default class Places extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      businesses: [
-        (plastic = [
-          {
-            name: "The Clean Kilo",
-            address: "1 Gibb Street, Birmingham, B9 4BF"
-          },
-          {
-            name: "Nature's Intention",
-            address: "2 High Street, Bromsgrove, B61 8HQ"
-          },
-          {
-            name: "Indigo Wholefoods",
-            address: "50-52 St Mary's Row, Birmingham, B13 8JG"
-          }
-        ]),
-        (meat = [
-          {
-            name: "BA-HA",
-            address: "The Mailbox, 171-172 Wharfside St, Birmingham, B1 1RL"
-          },
-          {
-            name: "Natural Bar and Kitchen",
-            address:
-              "1 Sirius (The Orion Building), 24 Suffolk St, Queensway, Birmingham, B1 1LT"
-          },
-          {
-            name: "3 Three's Coffee Lounge",
-            address: "17 Martineau Way, Birmingham, B2 4UW"
-          },
-          {
-            name: "Not Dogs",
-            address: "LinkStreet, Bullring, Birmingham, B5 4BS"
-          },
-          {
-            name: "The Warehouse Cafe",
-            address: "54-57 Allison St, Birmingham, B5 5TH"
-          }
-        ]),
-        (cosmetics = [
-          {
-            name: "Lush",
-            address: "143-144 New St, Birmingham, B2 4NY"
-          },
-          {
-            name: "The Body Shop",
-            address:
-              "Unit Su518, The Bullring Shopping Centre, Birmingham, B5 4BE"
-          },
-          {
-            name: "The Body Shop",
-            address: "Birmingham Station, Unit 14/15 The Concourse, B2 4XJ "
-          }
-        ]),
-        (energy = [
-          {
-            name: "Green Tech Hub",
-            address:
-              "Office 1, Izabella House, 24-26 Regent Place, Birmingham, B1 3NJ"
-          }
-        ]),
-        (clothes = [
-          {
-            name: "H&M",
-            address: "Smallbrook Queensway, Birmingham, B5 4BG"
-          },
-          {
-            name: "Oxfam",
-            address: "34 St Mary's Row, Birmingham, B13 8JG"
-          }
-        ])
-      ],
+      businesses: [],
       currentCategory: null,
       currentPage: 1
     };
   }
 
+  componentDidMount = () => {
+    firebase
+      .database()
+      .ref("users/")
+      .orderByChild("userType")
+      .equalTo("business")
+      .on("value", snapshot => {
+        if (snapshot.val()) {
+          this.setState({
+            businesses: Object.values(snapshot.val())
+          });
+        }
+      });
+  };
+
   updateCurrentCategory = category => {
-    this.setState(() => ({ currentCategory: [category] }));
+    // let current = this.state.businesses.filter(item => {
+    //   return item.category && item.category === category;
+    // });
+    this.setState(state => ({
+      ...state,
+      currentCategory: this.state.businesses.filter(item => {
+        return item.category === category;
+      })
+    }));
+    console.log(this.state.currentCategory);
   };
 
   render() {
@@ -114,7 +69,7 @@ export default class Places extends React.Component {
             sneak={65}
           >
             <TouchableOpacity
-              onPress={() => this.updateCurrentCategory(plastic)}
+              onPress={() => this.updateCurrentCategory("zeroWaste")}
             >
               <ImageBackground
                 style={{ height: 130, width: 130 }}
@@ -131,7 +86,6 @@ export default class Places extends React.Component {
                     alignItems: "center",
                     backgroundColor: "#90BC00"
                   }}
-                  onPress={() => this.updateCurrentCategory(plastic)}
                 >
                   <Text
                     style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
@@ -141,7 +95,9 @@ export default class Places extends React.Component {
                 </View>
               </ImageBackground>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.updateCurrentCategory(meat)}>
+            <TouchableOpacity
+              onPress={() => this.updateCurrentCategory("vegan")}
+            >
               <ImageBackground
                 style={{ height: 130, width: 130 }}
                 source={require("../assets/Black-Bean-Burgers-4-600x600.jpg")}
@@ -167,7 +123,7 @@ export default class Places extends React.Component {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.updateCurrentCategory(energy)}
+              onPress={() => this.updateCurrentCategory("energy")}
             >
               <ImageBackground
                 style={{ height: 130, width: 130 }}
@@ -194,7 +150,7 @@ export default class Places extends React.Component {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.updateCurrentCategory(clothes)}
+              onPress={() => this.updateCurrentCategory("clothes")}
             >
               <ImageBackground
                 style={{ height: 130, width: 130 }}
@@ -221,7 +177,7 @@ export default class Places extends React.Component {
               </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.updateCurrentCategory(cosmetics)}
+              onPress={() => this.updateCurrentCategory("cosmetics")}
             >
               <ImageBackground
                 style={{ height: 130, width: 130 }}
@@ -252,12 +208,26 @@ export default class Places extends React.Component {
         <ScrollView style={styles.mainContent}>
           <View style={{ padding: 5 }}>
             {this.state.currentCategory ? (
-              this.state.currentCategory[0].map((item, idx) => (
+              this.state.currentCategory.map((item, idx) => (
                 <TouchableOpacity
                   key={idx}
-                  onPress={() => this.props.navigation.navigate("BusinessInfo")}
+                  onPress={() =>
+                    this.props.navigation.navigate("BusinessInfo", {
+                      name: item.businessName,
+                      description: item.businessDescription,
+                      website: item.website,
+                      address: item.street + "," + " " + item.postcode,
+                      google: item.googlePos,
+                      openings: item.openingTimes,
+                      mainImage: item.imageURL
+                    })
+                  }
                 >
-                  <Card title={item.name} key={idx} des={item.address} />
+                  <Card
+                    title={item.businessName}
+                    key={idx}
+                    des={item.street + "," + " " + item.postcode}
+                  />
                 </TouchableOpacity>
               ))
             ) : (
