@@ -101,7 +101,7 @@ export default class SignUp extends React.Component {
               fontSize: 20,
               marginBottom: "7%",
               marginTop: -30,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular"
             }}
           >
             Personal Registration
@@ -114,11 +114,11 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={name => this.setState({ name })}
             value={this.state.name}
-            autoCapitalize="none"
           />
           <TextInput
             placeholder="Surname"
@@ -128,11 +128,11 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={surname => this.setState({ surname })}
             value={this.state.surname}
-            autoCapitalize="none"
           />
           <TextInput
             placeholder="Email"
@@ -142,7 +142,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
@@ -157,7 +158,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             autoCapitalize="none"
             onChangeText={password => this.setState({ password })}
@@ -172,9 +174,9 @@ export default class SignUp extends React.Component {
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
               marginBottom: "8%",
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
-            autoCapitalize="none"
             onChangeText={location => this.setState({ location })}
             value={this.state.location}
           />
@@ -187,7 +189,7 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "black", fontFamily: "poppins-regular" }}>
               Register
             </Text>
           </Button>
@@ -195,13 +197,13 @@ export default class SignUp extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Already have an account?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Login
@@ -210,16 +212,16 @@ export default class SignUp extends React.Component {
           </Button>
           <Button
             transparent
-            style={{ marginTop: -15 }}
+            style={{ marginTop: -20 }}
             onPress={() => this.props.navigation.navigate("RegisterBus")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Business Owner?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Register Here

@@ -61,7 +61,8 @@ export default class Login extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
@@ -79,7 +80,8 @@ export default class Login extends React.Component {
               borderBottomWidth: 1,
               marginBottom: "10%",
               paddingTop: 20,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             placeholder="Password"
             onChangeText={password => this.setState({ password })}
@@ -95,7 +97,7 @@ export default class Login extends React.Component {
               borderRadius: 30
             }}
           >
-            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "black", fontFamily: "poppins-regular" }}>
               Log In
             </Text>
           </Button>
@@ -104,13 +106,13 @@ export default class Login extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               New User?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Register Here
@@ -120,15 +122,15 @@ export default class Login extends React.Component {
           <Button
             onPress={() => this.props.navigation.navigate("RegisterBus")}
             transparent
-            style={{ marginTop: -15 }}
+            style={{ marginTop: -20 }}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Business Owner?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Register Here

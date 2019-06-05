@@ -58,27 +58,27 @@ export default class Places extends React.Component {
         <View style={styles.carousel}>
           <Carousel
             pageStyle={{
-              height: 130,
-              marginLeft: 6,
-              marginRight: 6,
+              height: 150,
+              marginLeft: 8,
+              marginRight: 8,
               marginTop: 10
             }}
-            pageWidth={130}
+            pageWidth={150}
             swipeThreshold={0.2}
             currentPage={this.state.currentPage}
-            sneak={65}
+            sneak={35}
           >
             <TouchableOpacity
               onPress={() => this.updateCurrentCategory("zeroWaste")}
             >
               <ImageBackground
-                style={{ height: 130, width: 130 }}
+                style={{ height: 150, width: 150 }}
                 source={require("../assets/530878d8-gp0stt3fm.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 110,
+                    top: 130,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -88,7 +88,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Reduce Plastic
                   </Text>
@@ -99,13 +99,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("vegan")}
             >
               <ImageBackground
-                style={{ height: 130, width: 130 }}
+                style={{ height: 150, width: 150 }}
                 source={require("../assets/Black-Bean-Burgers-4-600x600.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 110,
+                    top: 130,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -115,7 +115,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Reduce Meat
                   </Text>
@@ -126,13 +126,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("energy")}
             >
               <ImageBackground
-                style={{ height: 130, width: 130 }}
+                style={{ height: 150, width: 150 }}
                 source={require("../assets/energy.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 110,
+                    top: 130,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -142,7 +142,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Green Energy
                   </Text>
@@ -153,13 +153,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("clothes")}
             >
               <ImageBackground
-                style={{ height: 130, width: 130 }}
+                style={{ height: 150, width: 150 }}
                 source={require("../assets/clothes.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 110,
+                    top: 130,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -169,7 +169,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Recycle Clothes
                   </Text>
@@ -180,13 +180,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("cosmetics")}
             >
               <ImageBackground
-                style={{ height: 130, width: 130 }}
+                style={{ height: 150, width: 150 }}
                 source={require("../assets/lush.png")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 110,
+                    top: 130,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -196,7 +196,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Eco Cosmetics
                   </Text>
@@ -234,10 +234,10 @@ export default class Places extends React.Component {
               <Text
                 style={{
                   color: "#bababa",
-                  fontSize: 15,
-                  fontFamily: "dosis-medium",
+                  fontSize: 13,
+                  fontFamily: "poppins-light",
                   paddingTop: "35%",
-                  paddingLeft: "5%"
+                  paddingLeft: "1%"
                 }}
               >
                 Please select a category from above to view relevant businesses
@@ -260,8 +260,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "-25%",
-    marginRight: "-25%"
+    marginLeft: "-15%",
+    marginRight: "-15%"
   },
   mainContent: {
     height: "100%",

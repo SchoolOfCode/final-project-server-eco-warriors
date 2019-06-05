@@ -87,7 +87,7 @@ export default class SignUp extends React.Component {
             style={{
               fontSize: 20,
               marginBottom: "2%",
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular"
             }}
           >
             Business Registration
@@ -100,11 +100,11 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={businessName => this.setState({ businessName })}
             value={this.state.businessName}
-            autoCapitalize="none"
           />
           <TextInput
             placeholder="Business Email"
@@ -114,7 +114,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={email => this.setState({ email })}
             value={this.state.email}
@@ -129,7 +130,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             autoCapitalize="none"
             onChangeText={password => this.setState({ password })}
@@ -143,9 +145,9 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
-            autoCapitalize="none"
             onChangeText={street => this.setState({ street })}
             value={this.state.street}
           />
@@ -157,11 +159,12 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={postcode => this.setState({ postcode })}
             value={this.state.postcode}
-            autoCapitalize="none"
+            autoCapitalize="characters"
           />
           <TextInput
             placeholder="Business Description"
@@ -171,13 +174,13 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "#FFFFFF"
             }}
             onChangeText={businessDescription =>
               this.setState({ businessDescription })
             }
             value={this.state.businessDescription}
-            autoCapitalize="none"
           />
           <Picker
             selectedValue={this.state.category}
@@ -185,7 +188,7 @@ export default class SignUp extends React.Component {
               height: 45,
               width: 280,
               color: "white",
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular"
             }}
             onValueChange={(itemValue, itemIndex) => {
               console.log(itemIndex, itemValue);
@@ -223,7 +226,7 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "black", fontFamily: "poppins-regular" }}>
               Register
             </Text>
           </Button>
@@ -231,13 +234,13 @@ export default class SignUp extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Already have an account?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Login
@@ -245,17 +248,17 @@ export default class SignUp extends React.Component {
             </Text>
           </Button>
           <Button
-            style={{ marginTop: -15 }}
+            style={{ marginTop: -20 }}
             transparent
             onPress={() => this.props.navigation.navigate("SignUp")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Not a business?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Register Here
