@@ -14,12 +14,8 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      points: "",
-      plasticPoints: 35,
-      meatPoints: 30,
-      energyPoints: 0,
-      clothingPoints: 0,
-      cosmeticsPoints: 0
+      totalPoints: "",
+      transactions: null
     };
   }
 
@@ -31,7 +27,8 @@ export default class Profile extends React.Component {
         if (snapshot.val()) {
           this.setState({
             name: snapshot.val().firstName,
-            points: snapshot.val().points
+            totalPoints: snapshot.val().totalPoints,
+            transactions: snapshot.val().transactions
           });
         }
       });
@@ -50,8 +47,11 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    let newPoints = this.state.points * 10;
-    let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
+    let newPoints = this.state.totalPoints * 10;
+    let plastic = (
+      this.state.transactions.filter(item => item.category === "zeroWaste") *
+      3.64
+    ).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
     let meat = (this.state.meatPoints * 1.9).toFixed(0);

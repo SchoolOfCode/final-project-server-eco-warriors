@@ -15,19 +15,35 @@ export default class BusinessPointsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      points: "",
+      totalPoints: "",
       hasCameraPermission: true,
       scanned: false,
       userID: "",
       currentPoints: 0,
-      usersName: ""
+      usersName: "",
+      transactions: null,
+      business: "",
+      category: ""
     };
   }
 
   componentDidMount() {
-    console.log("registerMessageBar");
-    console.log("this.refs.alert", this.refs.alert);
+    // console.log("registerMessageBar");
+    // console.log("this.refs.alert", this.refs.alert);
     NotificationBarManager.registerMessageBar(this.refs.alert);
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid)
+      .on("value", snapshot => {
+        console.log("I am in this method");
+        if (snapshot.val()) {
+          console.log(snapshot.val().businessName);
+          this.setState({
+            business: snapshot.val().businessName,
+            category: snapshot.val().category
+          });
+        }
+      });
   }
   componentWillUnmount() {
     console.log("unregisterMessageBar");
@@ -41,7 +57,7 @@ export default class BusinessPointsPage extends React.Component {
       // required
     });
     this.setState({
-      points: ""
+      totalPoints: ""
     });
   };
 
@@ -51,11 +67,22 @@ export default class BusinessPointsPage extends React.Component {
 
   handleSubmit = () => {
     let newPoints =
-      Number(this.state.points) + Number(this.state.currentPoints);
+      Number(this.state.totalPoints) + Number(this.state.currentPoints);
+    let today = new Date();
+    let updatedTrans = [
+      ...this.state.transactions,
+      {
+        business: this.state.business,
+        category: this.state.category || "none",
+        points: this.state.totalPoints,
+        date: today
+      }
+    ];
     firebase
       .database()
       .ref("users/" + this.state.userID)
-      .update({ points: newPoints })
+      .update({ totalPoints: newPoints, transactions: updatedTrans })
+      // .update({ transactions: updatedTrans })
       .then(() => {
         console.log("here are the points");
         this.handleShowNotification();
@@ -79,8 +106,9 @@ export default class BusinessPointsPage extends React.Component {
           this.setState({
             scanned: true,
             usersName: snapshot.val().firstName,
-            currentPoints: Number(snapshot.val().points),
-            userID: data
+            currentPoints: Number(snapshot.val().totalPoints),
+            userID: data,
+            transactions: snapshot.val().transactions
           });
         }
       });
@@ -129,8 +157,8 @@ export default class BusinessPointsPage extends React.Component {
                 placeholderTextColor="green"
                 keyboardType="number-pad"
                 autoCapitalize="none"
-                onChangeText={points => this.setState({ points })}
-                value={String(this.state.points)}
+                onChangeText={totalPoints => this.setState({ totalPoints })}
+                value={String(this.state.totalPoints)}
               />
               <Button
                 style={{ backgroundColor: "#398900" }}
