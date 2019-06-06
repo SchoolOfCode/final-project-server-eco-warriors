@@ -11,27 +11,27 @@ export default class Pie extends Component {
   render() {
     let sampleData = [
       {
-        value: this.props.plasticPoints,
+        value: this.props.totals.zeroWaste,
         label: "Plastic",
         color: "#c7ea46"
       },
       {
-        value: this.props.meatPoints,
+        value: this.props.totals.vegan,
         label: "Meat",
         color: "#A9BA9D"
       },
       {
-        value: this.props.energyPoints,
+        value: this.props.totals.energy,
         label: "Energy",
         color: "#708238"
       },
       {
-        value: this.props.clothingPoints,
+        value: this.props.totals.clothes,
         label: "Clothing",
         color: "#0b6623"
       },
       {
-        value: this.props.cosmeticsPoints,
+        value: this.props.totals.cosmetics,
         label: "Cosmetics",
         color: "#4B5320"
       }
