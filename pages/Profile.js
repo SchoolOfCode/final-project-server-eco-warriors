@@ -5,8 +5,6 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 import Card from "./components/Card";
 import Pie from "./components/Pie";
-// import Roller from "./components/Roller";
-// import PureChart from "react-native-pure-chart";
 
 import { Text } from "@99xt/first-born";
 
@@ -15,12 +13,8 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      points: "",
-      plasticPoints: 35,
-      meatPoints: 30,
-      energyPoints: 0,
-      clothingPoints: 0,
-      cosmeticsPoints: 0
+      totalPoints: "",
+      transactions: []
     };
   }
 
@@ -32,7 +26,8 @@ export default class Profile extends React.Component {
         if (snapshot.val()) {
           this.setState({
             name: snapshot.val().firstName,
-            points: snapshot.val().points
+            totalPoints: snapshot.val().totalPoints,
+            transactions: snapshot.val().transactions
           });
         }
       });
@@ -51,39 +46,37 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
+    let newPoints = this.state.totalPoints * 10;
+
+    const totals = this.state.transactions.reduce(
+      (total, item) => {
+        if (typeof item === "string") return total;
+        if (!total[item.category]) {
+          total[item.category] = Number(item.points);
+          return total;
+        }
+        total[item.category] += Number(item.points);
+        return total;
+      },
+      {
+        zeroWaste: 1,
+        vegan: 0,
+        energy: 0,
+        clothes: 0,
+        cosmetics: 0
+      }
+    );
+    console.log(totals);
+    console.log(this.state);
+    console.log(firebase.auth().currentUser.uid);
+
+    let plastic = (totals.zeroWaste * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
-    let meat = (this.state.meatPoints * 1.9).toFixed(0);
+    let meat = (totals.vegan * 1.9).toFixed(0);
     let miles = (meat * 2.32).toFixed(0);
     const { currentUser } = this.state;
-    // let sampleData = [
-    //   {
-    //     value: this.state.plasticPoints,
-    //     label: "Plastic",
-    //     color: "#c7ea46"
-    //   },
-    //   {
-    //     value: this.state.meatPoints,
-    //     label: "Meat",
-    //     color: "#A9BA9D"
-    //   },
-    //   {
-    //     value: this.state.energyPoints,
-    //     label: "Energy",
-    //     color: "#708238"
-    //   },
-    //   {
-    //     value: this.state.clothingPoints,
-    //     label: "Clothing",
-    //     color: "#0b6623"
-    //   },
-    //   {
-    //     value: this.state.cosmeticsPoints,
-    //     label: "Cosmetics",
-    //     color: "#4B5320"
-    //   }
-    // ];
+
     return (
       <View style={styles.container}>
         <Header title="Profile" isLoggedIn />
@@ -97,11 +90,7 @@ export default class Profile extends React.Component {
             >
               Hello {this.state.name}
             </Text>
-            <Pie {...this.state} />
-            {/* <PureChart data={sampleData} type="pie" />
-            <View style={styles.points}>
-              <Roller value={this.state.points} />
-            </View> */}
+            <Pie points={this.state.totalPoints} totals={totals} />
             <Text
               style={{
                 fontSize: 18,
@@ -112,7 +101,6 @@ export default class Profile extends React.Component {
               So far you have prevented:
             </Text>
           </View>
-
           <View style={styles.body2}>
             <Card
               icon="bottle-wine"
@@ -121,7 +109,7 @@ export default class Profile extends React.Component {
               iconSize={35}
               iconColor="#c7ea46"
               title={`Plastic Waste - ${plastic}g`}
-              des={` Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
+              des={`Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
             <Card
               icon="food"
@@ -129,29 +117,29 @@ export default class Profile extends React.Component {
               target={100}
               iconSize={35}
               iconColor="#A9BA9D"
-              title={`Reduce Meat - ${meat}kg`}
-              des={` Of C02 from entering the atmosphere, equal to driving ${miles} miles!`}
+              title={`Reduce Meat - ${meat}kg of C02`}
+              des={`From entering the atmosphere, this is equal to driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"
               iconSize={35}
               iconColor="#708238"
               title="Green Energy"
-              des="you have not yet started using renewable energy"
+              des="You have not started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
               iconColor="#0b6623"
               title="Recycle Clothes"
-              des="you have not yet started recycling clothes "
+              des="You have not started recycling clothes "
             />
             <Card
               icon="brush"
               iconSize={35}
               iconColor="#4B5320"
               title="Eco Cosmetics"
-              des="you have not yet started using enviromentaly friendly products"
+              des="You have not started using eco friendly products"
             />
           </View>
         </ScrollView>
