@@ -14,12 +14,13 @@ export default class Profile extends React.Component {
     super(props);
     this.state = {
       name: "",
-      points: "",
+      totalPoints: "",
       plasticPoints: 35,
       meatPoints: 30,
       energyPoints: 0,
       clothingPoints: 0,
-      cosmeticsPoints: 0
+      cosmeticsPoints: 0,
+      transactions: []
     };
   }
 
@@ -31,7 +32,8 @@ export default class Profile extends React.Component {
         if (snapshot.val()) {
           this.setState({
             name: snapshot.val().firstName,
-            points: snapshot.val().points
+            totalPoints: snapshot.val().totalPoints,
+            transactions: snapshot.val().transactions
           });
         }
       });
@@ -50,36 +52,71 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    let newPoints = this.state.points * 10;
-    let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
+    let newPoints = this.state.totalPoints * 10;
+
+    // let totals = {};
+
+    // this.state.transactions &&
+    //   this.state.transactions.forEach(item => {
+    //     if (!totals[item.category]) {
+    //       totals[item.category] = 0;
+    //       totals[item.category] += item.points;
+    //     } else {
+    //       return (totals[item.category] += Number(item.points));
+    //     }
+    //   });
+
+    const totals = this.state.transactions.reduce(
+      (total, item) => {
+        if (typeof item === "string") return total;
+        if (!total[item.category]) {
+          total[item.category] = Number(item.points);
+          return total;
+        }
+        total[item.category] += Number(item.points);
+        return total;
+      },
+      {
+        zeroWaste: 1,
+        vegan: 0,
+        energy: 0,
+        clothes: 0,
+        cosmetics: 0
+      }
+    );
+    console.log(this.state);
+    console.log("Totals", totals);
+
+    let plastic = (totals.zeroWaste * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
-    let meat = (this.state.meatPoints * 1.9).toFixed(0);
+    let meat = (totals.vegan * 1.9).toFixed(0);
     let miles = (meat * 2.32).toFixed(0);
+
     const { currentUser } = this.state;
     let sampleData = [
       {
-        value: this.state.plasticPoints,
+        value: totals.zeroWaste,
         label: "Plastic",
         color: "#c7ea46"
       },
       {
-        value: this.state.meatPoints,
+        value: totals.vegan,
         label: "Meat",
         color: "#A9BA9D"
       },
       {
-        value: this.state.energyPoints,
+        value: totals.energy,
         label: "Energy",
         color: "#708238"
       },
       {
-        value: this.state.clothingPoints,
+        value: totals.clothes,
         label: "Clothing",
         color: "#0b6623"
       },
       {
-        value: this.state.cosmeticsPoints,
+        value: totals.cosmetics,
         label: "Cosmetics",
         color: "#4B5320"
       }
@@ -87,6 +124,7 @@ export default class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <Header title="Profile" isLoggedIn />
+
         <ScrollView style={styles.mainContent}>
           <View style={styles.body}>
             <Text
@@ -100,16 +138,6 @@ export default class Profile extends React.Component {
             </Text>
             <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
-              {/* <Text
-                style={{
-                  color: "white",
-                  zIndex: 1,
-                  fontSize: 65,
-                  fontFamily: "dosis-bold"
-                }}
-              >
-                {this.state.points}
-              </Text> */}
               <Roller value={newPoints} />
             </View>
             <Text
@@ -160,6 +188,7 @@ export default class Profile extends React.Component {
             />
           </View>
         </ScrollView>
+
         <Footer {...this.props} active="Profile" />
       </View>
     );
