@@ -4,10 +4,11 @@ import Footer from "./components/Footer";
 import { StyleSheet, View, ScrollView } from "react-native";
 import firebase from "firebase";
 import Card from "./components/Card";
-import Roller from "./components/Tcker";
+import Pie from "./components/Pie";
+// import Roller from "./components/Roller";
+// import PureChart from "react-native-pure-chart";
 
 import { Text } from "@99xt/first-born";
-import PureChart from "react-native-pure-chart";
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -50,40 +51,39 @@ export default class Profile extends React.Component {
   };
 
   render() {
-    let newPoints = this.state.points * 10;
     let plastic = (this.state.plasticPoints * 3.64).toFixed(0);
     let straws = (plastic / 0.4).toFixed(0);
 
     let meat = (this.state.meatPoints * 1.9).toFixed(0);
     let miles = (meat * 2.32).toFixed(0);
     const { currentUser } = this.state;
-    let sampleData = [
-      {
-        value: this.state.plasticPoints,
-        label: "Plastic",
-        color: "#c7ea46"
-      },
-      {
-        value: this.state.meatPoints,
-        label: "Meat",
-        color: "#A9BA9D"
-      },
-      {
-        value: this.state.energyPoints,
-        label: "Energy",
-        color: "#708238"
-      },
-      {
-        value: this.state.clothingPoints,
-        label: "Clothing",
-        color: "#0b6623"
-      },
-      {
-        value: this.state.cosmeticsPoints,
-        label: "Cosmetics",
-        color: "#4B5320"
-      }
-    ];
+    // let sampleData = [
+    //   {
+    //     value: this.state.plasticPoints,
+    //     label: "Plastic",
+    //     color: "#c7ea46"
+    //   },
+    //   {
+    //     value: this.state.meatPoints,
+    //     label: "Meat",
+    //     color: "#A9BA9D"
+    //   },
+    //   {
+    //     value: this.state.energyPoints,
+    //     label: "Energy",
+    //     color: "#708238"
+    //   },
+    //   {
+    //     value: this.state.clothingPoints,
+    //     label: "Clothing",
+    //     color: "#0b6623"
+    //   },
+    //   {
+    //     value: this.state.cosmeticsPoints,
+    //     label: "Cosmetics",
+    //     color: "#4B5320"
+    //   }
+    // ];
     return (
       <View style={styles.container}>
         <Header title="Profile" isLoggedIn />
@@ -92,39 +92,32 @@ export default class Profile extends React.Component {
             <Text
               style={{
                 fontSize: 28,
-                fontFamily: "dosis-semi-bold",
-                padding: 10
+                fontFamily: "dosis-semi-bold"
               }}
             >
               Hello {this.state.name}
             </Text>
-            <PureChart data={sampleData} type="pie" />
+            <Pie {...this.state} />
+            {/* <PureChart data={sampleData} type="pie" />
             <View style={styles.points}>
-              {/* <Text
-                style={{
-                  color: "white",
-                  zIndex: 1,
-                  fontSize: 65,
-                  fontFamily: "dosis-bold"
-                }}
-              >
-                {this.state.points}
-              </Text> */}
-              <Roller value={newPoints} />
-            </View>
+              <Roller value={this.state.points} />
+            </View> */}
             <Text
               style={{
                 fontSize: 18,
                 fontFamily: "dosis-semi-bold",
-                padding: 5
+                paddingBottom: 5
               }}
             >
               So far you have prevented:
             </Text>
           </View>
+
           <View style={styles.body2}>
             <Card
               icon="bottle-wine"
+              progress={plastic}
+              target={1000}
               iconSize={35}
               iconColor="#c7ea46"
               title={`Plastic Waste - ${plastic}g`}
@@ -132,6 +125,8 @@ export default class Profile extends React.Component {
             />
             <Card
               icon="food"
+              progress={meat}
+              target={100}
               iconSize={35}
               iconColor="#A9BA9D"
               title={`Reduce Meat - ${meat}kg`}
@@ -169,6 +164,7 @@ export default class Profile extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    flexDirection: "column",
     flex: 1
   },
   container2: {

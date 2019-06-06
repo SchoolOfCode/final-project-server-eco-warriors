@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 60,
-    color: "#FFF",
+    color: "black",
     fontFamily: "dosis-bold"
   }
 });

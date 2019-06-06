@@ -3,11 +3,25 @@ import { StyleSheet, View } from "react-native";
 import { Text } from "@99xt/first-born";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+// const scale = 10;
+
 export default class Card extends Component {
   render() {
+    // const fillValue = (this.props.progress / this.props.target) * scale;
+    // console.log(this.props);
+    // console.log("fv", fillValue);
     return (
       <View style={styles.card}>
         <View style={{ marginRight: 15 }}>
+          {/* {Array(scale)
+            .fill(0)
+            .map((itm, idx) => (
+              <MaterialCommunityIcons
+                name={this.props.icon}
+                size={this.props.iconSize}
+                color={idx < fillValue ? this.props.iconColor : "gray"}
+              />
+            ))} */}
           <MaterialCommunityIcons
             name={this.props.icon}
             size={this.props.iconSize}
