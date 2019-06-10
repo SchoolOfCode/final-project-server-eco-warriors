@@ -47,7 +47,8 @@ export default class SignUp extends React.Component {
             firstName: this.state.name,
             surname: this.state.surname,
             location: this.state.location,
-            points: 0
+            totalPoints: 0,
+            transactions: ["empty"]
             //insert QR code
           })
           .then(() => {
