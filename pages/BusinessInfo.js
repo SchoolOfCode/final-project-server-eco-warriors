@@ -15,19 +15,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { Text, Button } from "@99xt/first-born";
 
 export default class BusinessInfo extends React.Component {
-  state = {
-    mapRegion: {
-      latitude: 52.486059,
-      longitude: -1.909804,
-      latitudeDelta: 0.2203,
-      longitudeDelta: 0.0983
-    }
-  };
-
-  _handleMapRegionChange = mapRegion => {
-    this.setState({ mapRegion });
-  };
-
   render() {
     const {
       name,
@@ -36,10 +23,9 @@ export default class BusinessInfo extends React.Component {
       address,
       google,
       openings,
-      mainImage
+      mainImage,
+      mapRegion
     } = this.props.navigation.state.params;
-
-    let markers = [{ title: "Green Tech Hub", subtitle: "Address" }];
 
     return (
       <>
@@ -99,7 +85,7 @@ export default class BusinessInfo extends React.Component {
                   style={{
                     textDecorationLine: "underline",
                     textDecorationColor: "red",
-                    fontSize: 11,
+                    fontSize: 14,
                     fontFamily: "poppins-regular"
                   }}
                 >
@@ -113,12 +99,23 @@ export default class BusinessInfo extends React.Component {
               <Text style={{ fontFamily: "poppins-regular" }}>{address}</Text>
             </View>
             {/* <TouchableOpacity onPress={() => Linking.openURL(google)}> */}
-            <MapView
-              style={{ alignSelf: "stretch", height: 200 }}
-              annotations={markers}
-              region={this.state.mapRegion}
-              onRegionChange={this._handleMapRegionChange}
-            />
+            {mapRegion ? (
+              <MapView
+                style={{ alignSelf: "stretch", height: 200 }}
+                region={mapRegion}
+              >
+                <MapView.Marker
+                  coordinate={{
+                    latitude: mapRegion.latitude,
+                    longitude: mapRegion.longitude
+                  }}
+                  title={name}
+                />
+              </MapView>
+            ) : (
+              <Text>Here is a map</Text>
+            )}
+
             {/* </TouchableOpacity> */}
             <View style={{ alignItems: "center", padding: 10 }}>
               <Button
@@ -157,7 +154,7 @@ const styles = StyleSheet.create({
   },
   mainTitle: {
     fontFamily: "poppins-bold",
-    fontSize: 31,
+    fontSize: 28,
     marginLeft: 15,
     color: "#FFFFFF"
   },

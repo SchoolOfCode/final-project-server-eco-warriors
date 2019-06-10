@@ -58,27 +58,27 @@ export default class Places extends React.Component {
         <View style={styles.carousel}>
           <Carousel
             pageStyle={{
-              height: 150,
-              marginLeft: 8,
-              marginRight: 8,
+              height: 130,
+              marginLeft: 6,
+              marginRight: 6,
               marginTop: 10
             }}
-            pageWidth={150}
+            pageWidth={130}
             swipeThreshold={0.2}
             currentPage={this.state.currentPage}
-            sneak={35}
+            sneak={65}
           >
             <TouchableOpacity
               onPress={() => this.updateCurrentCategory("zeroWaste")}
             >
               <ImageBackground
-                style={{ height: 150, width: 150 }}
+                style={{ height: 130, width: 130 }}
                 source={require("../assets/530878d8-gp0stt3fm.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 130,
+                    top: 110,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -99,13 +99,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("vegan")}
             >
               <ImageBackground
-                style={{ height: 150, width: 150 }}
+                style={{ height: 130, width: 130 }}
                 source={require("../assets/Black-Bean-Burgers-4-600x600.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 130,
+                    top: 110,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -126,13 +126,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("energy")}
             >
               <ImageBackground
-                style={{ height: 150, width: 150 }}
+                style={{ height: 130, width: 130 }}
                 source={require("../assets/energy.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 130,
+                    top: 110,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -153,13 +153,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("clothes")}
             >
               <ImageBackground
-                style={{ height: 150, width: 150 }}
+                style={{ height: 130, width: 130 }}
                 source={require("../assets/clothes.jpg")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 130,
+                    top: 110,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -180,13 +180,13 @@ export default class Places extends React.Component {
               onPress={() => this.updateCurrentCategory("cosmetics")}
             >
               <ImageBackground
-                style={{ height: 150, width: 150 }}
+                style={{ height: 130, width: 130 }}
                 source={require("../assets/lush.png")}
               >
                 <View
                   style={{
                     position: "absolute",
-                    top: 130,
+                    top: 110,
                     left: 0,
                     right: 0,
                     bottom: 0,
@@ -219,7 +219,8 @@ export default class Places extends React.Component {
                       address: item.street + "," + " " + item.postcode,
                       google: item.googlePos,
                       openings: item.openingTimes,
-                      mainImage: item.imageURL
+                      mainImage: item.imageURL,
+                      mapRegion: item.mapRegion
                     })
                   }
                 >
