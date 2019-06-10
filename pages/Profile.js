@@ -107,7 +107,7 @@ export default class Profile extends React.Component {
               progress={plastic}
               target={1000}
               iconSize={35}
-              iconColor="#c7ea46"
+              iconColor="#00FF00"
               title={`Plastic Waste - ${plastic}g`}
               des={`Of plastic waste from entering the ocean thats the same as ${straws} plastic straws!`}
             />
@@ -116,28 +116,28 @@ export default class Profile extends React.Component {
               progress={meat}
               target={100}
               iconSize={35}
-              iconColor="#A9BA9D"
+              iconColor="#29AB87"
               title={`Reduce Meat - ${meat}kg of C02`}
               des={`From entering the atmosphere, this is equal to driving ${miles} miles!`}
             />
             <Card
               icon="lightbulb-on"
               iconSize={35}
-              iconColor="#708238"
+              iconColor="#BFFF00"
               title="Green Energy"
               des="You have not started using renewable energy"
             />
             <Card
               icon="tshirt-crew"
               iconSize={35}
-              iconColor="#0b6623"
+              iconColor="#8DB600"
               title="Recycle Clothes"
               des="You have not started recycling clothes "
             />
             <Card
               icon="brush"
               iconSize={35}
-              iconColor="#4B5320"
+              iconColor="#008080"
               title="Eco Cosmetics"
               des="You have not started using eco friendly products"
             />
