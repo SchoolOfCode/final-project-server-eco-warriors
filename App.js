@@ -41,13 +41,25 @@ const AppNavigator = createAppContainer(
 export default class App extends React.Component {
   componentDidMount() {
     Font.loadAsync({
-      "dosis-regular": require("./assets/fonts/Dosis-Regular.ttf"),
-      "dosis-bold": require("./assets/fonts/Dosis-Bold.ttf"),
-      "dosis-extra-bold": require("./assets/fonts/Dosis-ExtraBold.ttf"),
-      "dosis-light": require("./assets/fonts/Dosis-Light.ttf"),
-      "dosis-extra-light": require("./assets/fonts/Dosis-ExtraLight.ttf"),
-      "dosis-medium": require("./assets/fonts/Dosis-Medium.ttf"),
-      "dosis-semi-bold": require("./assets/fonts/Dosis-SemiBold.ttf")
+      "overlock-bold": require("./assets/fonts/Overlock-Bold.ttf"),
+      "poppins-black": require("./assets/fonts/Poppins-Black.ttf"),
+      "poppins-bold": require("./assets/fonts/Poppins-Bold.ttf"),
+      "poppins-italic": require("./assets/fonts/Poppins-Italic.ttf"),
+      "poppins-regular": require("./assets/fonts/Poppins-Regular.ttf"),
+      "poppins-light": require("./assets/fonts/Poppins-Light.ttf"),
+      "poppins-medium": require("./assets/fonts/Poppins-Medium.ttf"),
+      "poppins-thin": require("./assets/fonts/Poppins-Thin.ttf"),
+      "poppins-black-italic": require("./assets/fonts/Poppins-BlackItalic.ttf"),
+      "poppins-bold-italic": require("./assets/fonts/Poppins-BoldItalic.ttf"),
+      "poppins-extra-bold": require("./assets/fonts/Poppins-ExtraBold.ttf"),
+      "poppins-extra-bold-italic": require("./assets/fonts/Poppins-ExtraBoldItalic.ttf"),
+      "poppins-extra-light": require("./assets/fonts/Poppins-ExtraLight.ttf"),
+      "poppins-extra-light-italic": require("./assets/fonts/Poppins-ExtraLightItalic.ttf"),
+      "poppins-light-italic": require("./assets/fonts/Poppins-LightItalic.ttf"),
+      "poppins-medium-italic": require("./assets/fonts/Poppins-MediumItalic.ttf"),
+      "poppins-semi-bold": require("./assets/fonts/Poppins-SemiBold.ttf"),
+      "poppins-semi-bold-italic": require("./assets/fonts/Poppins-SemiBoldItalic.ttf"),
+      "poppins-thin-italic": require("./assets/fonts/Poppins-ThinItalic.ttf")
     });
   }
 

@@ -102,7 +102,7 @@ export default class SignUp extends React.Component {
               fontSize: 20,
               marginBottom: "7%",
               marginTop: -30,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular"
             }}
           >
             Personal Registration
@@ -115,7 +115,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "white"
             }}
             onChangeText={name => this.setState({ name })}
             value={this.state.name}
@@ -129,7 +130,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "white"
             }}
             onChangeText={surname => this.setState({ surname })}
             value={this.state.surname}
@@ -143,7 +145,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "white"
             }}
             autoCapitalize="none"
             onChangeText={email => this.setState({ email })}
@@ -158,7 +161,8 @@ export default class SignUp extends React.Component {
               height: "7%",
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "white"
             }}
             autoCapitalize="none"
             onChangeText={password => this.setState({ password })}
@@ -173,7 +177,8 @@ export default class SignUp extends React.Component {
               borderBottomColor: "#FFFFFF",
               borderBottomWidth: 1,
               marginBottom: "8%",
-              fontFamily: "dosis-medium"
+              fontFamily: "poppins-regular",
+              color: "white"
             }}
             autoCapitalize="none"
             onChangeText={location => this.setState({ location })}
@@ -188,7 +193,7 @@ export default class SignUp extends React.Component {
             }}
             onPress={() => this.handleSignUp()}
           >
-            <Text style={{ color: "black", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "black", fontFamily: "poppins-regular" }}>
               Register
             </Text>
           </Button>
@@ -196,13 +201,13 @@ export default class SignUp extends React.Component {
             transparent
             onPress={() => this.props.navigation.navigate("Login")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Already have an account?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Login
@@ -214,13 +219,13 @@ export default class SignUp extends React.Component {
             style={{ marginTop: -15 }}
             onPress={() => this.props.navigation.navigate("RegisterBus")}
           >
-            <Text style={{ color: "white", fontFamily: "dosis-medium" }}>
+            <Text style={{ color: "white", fontFamily: "poppins-regular" }}>
               Business Owner?{" "}
               <Text
                 style={{
                   textDecorationLine: "underline",
                   color: "white",
-                  fontFamily: "dosis-medium"
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Register Here

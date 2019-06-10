@@ -88,7 +88,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Reduce Plastic
                   </Text>
@@ -115,7 +115,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Reduce Meat
                   </Text>
@@ -142,7 +142,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Green Energy
                   </Text>
@@ -169,7 +169,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Recycle Clothes
                   </Text>
@@ -196,7 +196,7 @@ export default class Places extends React.Component {
                   }}
                 >
                   <Text
-                    style={{ color: "#FFFFFF", fontFamily: "dosis-medium" }}
+                    style={{ color: "#FFFFFF", fontFamily: "poppins-regular" }}
                   >
                     Eco Cosmetics
                   </Text>
@@ -219,7 +219,8 @@ export default class Places extends React.Component {
                       address: item.street + "," + " " + item.postcode,
                       google: item.googlePos,
                       openings: item.openingTimes,
-                      mainImage: item.imageURL
+                      mainImage: item.imageURL,
+                      mapRegion: item.mapRegion
                     })
                   }
                 >
@@ -234,8 +235,8 @@ export default class Places extends React.Component {
               <Text
                 style={{
                   color: "#bababa",
-                  fontSize: 15,
-                  fontFamily: "dosis-medium",
+                  fontSize: 13,
+                  fontFamily: "poppins-light",
                   paddingTop: "35%",
                   paddingLeft: "5%"
                 }}

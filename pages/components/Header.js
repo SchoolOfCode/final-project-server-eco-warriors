@@ -43,8 +43,8 @@ export default class Header extends React.Component {
           <Text
             style={{
               color: "white",
-              fontSize: 30,
-              fontFamily: "dosis-bold"
+              fontSize: 26,
+              fontFamily: "poppins-bold"
             }}
           >
             {this.props.title}

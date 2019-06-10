@@ -16,8 +16,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Profile
@@ -29,8 +29,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Profile
@@ -46,8 +46,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Places
@@ -59,8 +59,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Places
@@ -76,8 +76,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Collect Points
@@ -89,8 +89,8 @@ export default class Footer extends Component {
               <Text
                 style={{
                   color: "black",
-                  fontSize: 12,
-                  fontFamily: "dosis-medium"
+                  fontSize: 8,
+                  fontFamily: "poppins-regular"
                 }}
               >
                 Collect Points

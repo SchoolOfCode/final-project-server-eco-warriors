@@ -29,10 +29,10 @@ export default class Card extends Component {
           />
         </View>
         <View style={{ marginRight: 45 }}>
-          <Text style={{ fontSize: 22, fontFamily: "dosis-bold" }}>
+          <Text style={{ fontSize: 14, fontFamily: "poppins-regular" }}>
             {this.props.title}
           </Text>
-          <Text style={{ fontSize: 18, fontFamily: "dosis-light" }}>
+          <Text style={{ fontSize: 10, fontFamily: "poppins-light" }}>
             {this.props.des}
           </Text>
         </View>

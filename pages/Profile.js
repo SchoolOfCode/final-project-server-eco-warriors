@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
             <Text
               style={{
                 fontSize: 28,
-                fontFamily: "dosis-semi-bold"
+                fontFamily: "poppins-semi-bold"
               }}
             >
               Hello {this.state.name}
@@ -94,7 +94,7 @@ export default class Profile extends React.Component {
             <Text
               style={{
                 fontSize: 18,
-                fontFamily: "dosis-semi-bold",
+                fontFamily: "poppins-medium",
                 paddingBottom: 5
               }}
             >

@@ -9,6 +9,7 @@ import {
   Linking,
   TouchableOpacity
 } from "react-native";
+import { Constants, MapView } from "expo";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Text, Button } from "@99xt/first-born";
@@ -22,7 +23,8 @@ export default class BusinessInfo extends React.Component {
       address,
       google,
       openings,
-      mainImage
+      mainImage,
+      mapRegion
     } = this.props.navigation.state.params;
 
     return (
@@ -58,11 +60,11 @@ export default class BusinessInfo extends React.Component {
                       justifyContent: "space-between"
                     }}
                   >
-                    <Text style={{ fontFamily: "dosis-medium" }}>
+                    <Text style={{ fontFamily: "poppins-regular" }}>
                       {item.day}
                     </Text>
                     <Text
-                      style={{ marginRight: 10, fontFamily: "dosis-medium" }}
+                      style={{ marginRight: 10, fontFamily: "poppins-medium" }}
                     >
                       {item.open}
                     </Text>
@@ -79,9 +81,9 @@ export default class BusinessInfo extends React.Component {
                 <Text
                   style={{
                     textDecorationLine: "underline",
-                    textDecorationColor: "red",
-                    fontSize: 15,
-                    fontFamily: "dosis-medium"
+                    textDecorationColor: "black",
+                    fontSize: 14,
+                    fontFamily: "poppins-regular"
                   }}
                 >
                   {website}
@@ -91,14 +93,24 @@ export default class BusinessInfo extends React.Component {
             <View style={styles.divider} />
             <View style={styles.description}>
               <Text style={styles.title}>Address</Text>
-              <Text style={{ fontFamily: "dosis-medium" }}>{address}</Text>
+              <Text style={{ fontFamily: "poppins-regular" }}>{address}</Text>
             </View>
-            <TouchableOpacity onPress={() => Linking.openURL(google)}>
-              <Image
-                style={styles.image2}
-                source={require("../assets/cleankilomap.png")}
-              />
-            </TouchableOpacity>
+            {mapRegion ? (
+              <MapView
+                style={{ alignSelf: "stretch", height: 200 }}
+                region={mapRegion}
+              >
+                <MapView.Marker
+                  coordinate={{
+                    latitude: mapRegion.latitude,
+                    longitude: mapRegion.longitude
+                  }}
+                  title={name}
+                />
+              </MapView>
+            ) : (
+              <Text>Here is a map</Text>
+            )}
             <View style={{ alignItems: "center", padding: 10 }}>
               <Button
                 style={{
@@ -109,7 +121,7 @@ export default class BusinessInfo extends React.Component {
                 }}
                 onPress={() => Linking.openURL(google)}
               >
-                <Text style={{ color: "white", fontFamily: "dosis-bold" }}>
+                <Text style={{ color: "white", fontFamily: "poppins-bold" }}>
                   Directions
                 </Text>
               </Button>
@@ -135,8 +147,8 @@ const styles = StyleSheet.create({
     paddingBottom: 30
   },
   mainTitle: {
-    fontFamily: "dosis-bold",
-    fontSize: 35,
+    fontFamily: "poppins-bold",
+    fontSize: 28,
     marginLeft: 15,
     color: "#FFFFFF"
   },
@@ -164,7 +176,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     marginLeft: 10,
-    fontFamily: "dosis-bold"
+    fontFamily: "poppins-bold"
   },
   openingTimes: {},
   scroll: {
@@ -177,8 +189,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontSize: 20,
-    fontFamily: "dosis-bold",
+    fontSize: 16,
+    fontFamily: "poppins-bold",
     marginBottom: 7
     // padding: 5
   },

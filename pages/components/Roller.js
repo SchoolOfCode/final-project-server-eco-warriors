@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 60,
     color: "black",
-    fontFamily: "dosis-bold"
+    fontFamily: "overlock-bold"
   }
 });
