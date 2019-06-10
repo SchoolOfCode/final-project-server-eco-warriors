@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 import { Svg } from "expo";
 const { Circle } = Svg;
@@ -13,27 +13,27 @@ export default class Pie extends Component {
       {
         value: this.props.totals.zeroWaste,
         label: "Plastic",
-        color: "#c7ea46"
+        color: "#00FF00"
       },
       {
         value: this.props.totals.vegan,
         label: "Meat",
-        color: "#A9BA9D"
+        color: "#29AB87"
       },
       {
         value: this.props.totals.energy,
         label: "Energy",
-        color: "#708238"
+        color: "#BFFF00"
       },
       {
         value: this.props.totals.clothes,
         label: "Clothing",
-        color: "#0b6623"
+        color: "#8DB600"
       },
       {
         value: this.props.totals.cosmetics,
         label: "Cosmetics",
-        color: "#4B5320"
+        color: "#008080"
       }
     ];
     return (
@@ -55,6 +55,9 @@ export default class Pie extends Component {
         </View>
         <View style={styles.points}>
           <Roller value={this.props.points} />
+          <Text style={{ fontSize: 13, position: "relative", bottom: 100 }}>
+            Total Points
+          </Text>
         </View>
       </View>
     );
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    top: 225,
+    top: 233,
     zIndex: 1
   }
 });
